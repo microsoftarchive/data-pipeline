@@ -1,0 +1,55 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Web.Http.Dependencies;
+
+namespace Microsoft.Practices.DataPipeline
+{
+    public abstract class DependencyResolverFactory
+    {
+        private static IDependencyResolver _resolver = null;
+        private static readonly object _lockObj = new object();
+
+        protected static IDependencyResolver _factory
+        {
+            get
+            {
+                if (_resolver == null)
+                {
+                    lock (_lockObj)
+                    {
+                        if (_resolver == null)
+                        {
+                            _resolver = new BasicDependencyResolver();
+                        }
+                    }
+                }
+                return _resolver;
+            }
+        }
+
+        public static void Register(IDependencyResolver resolver)
+        {
+            lock (_lockObj)
+            {
+                _resolver = resolver;
+            }
+        }
+        public static IDependencyResolver GetResolver()
+        {
+            return _resolver;
+        }
+      
+    }
+
+    public static class DependencyExtensions
+    {
+        public static T GetService<T>(this IDependencyResolver resolver)
+            where T : class
+        {
+            return ((IDependencyScope) resolver).GetService(typeof (T)) as T;
+        }
+    }
+}

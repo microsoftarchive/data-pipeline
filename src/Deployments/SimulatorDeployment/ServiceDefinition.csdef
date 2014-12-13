@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ServiceDefinition name="SimulatorDeployment" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition" schemaVersion="2014-06.2.4">
+  <WorkerRole name="Cars.Simulator.WorkerRole" vmsize="Standard_D2">
+    <Startup>
+      <Task taskType="simple" executionContext="elevated" commandLine="setup\install.cmd">
+      </Task>
+    </Startup>
+    <ConfigurationSettings>
+      <Setting name="Simulator.Scenario" />
+      <Setting name="Simulator.EventHubConnectionString" />
+      <Setting name="Simulator.EventHubPath" />
+      <Setting name="Simulator.NumberOfCars" />
+      <Setting name="Simulator.ScenarioDuration" />
+      <Setting name="Simulator.SenderCountPerInstance" />
+      <Setting name="Simulator.WarmUpDuration" />
+    </ConfigurationSettings>
+    <Runtime>
+      <Environment>
+        <Variable name="TelemetryLogsPath">
+          <RoleInstanceValue xpath="/RoleEnvironment/CurrentInstance/LocalResources/LocalResource[@name='TelemetryArchive']/@path" />
+        </Variable>
+      </Environment>
+    </Runtime>
+    <LocalResources>
+      <LocalStorage name="TelemetryArchive" cleanOnRoleRecycle="false" />
+    </LocalResources>
+  </WorkerRole>
+</ServiceDefinition>

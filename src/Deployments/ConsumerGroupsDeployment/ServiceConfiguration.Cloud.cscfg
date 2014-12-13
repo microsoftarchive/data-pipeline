@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ServiceConfiguration serviceName="ConsumerGroupsDeployment" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceConfiguration" osFamily="4" osVersion="*" schemaVersion="2014-06.2.4">
+  <Role name="Cars.Dispatcher.WorkerRole">
+    <Instances count="1" />
+    <ConfigurationSettings>
+      <Setting name="Dispatcher.ConsumerGroupName" value="Dispatcher" />
+      <Setting name="Dispatcher.MaxBatchSize" value="500" />
+      <Setting name="Dispatcher.PrefetchCount" value="2000" />
+      <Setting name="Dispatcher.ReceiveTimeout" value="0.00:01:00" />
+      <Setting name="Dispatcher.MaxConcurrencyPerProcessor" value="250" />
+      <Setting name="Dispatcher.CheckpointStorageAccount" value="DefaultEndpointsProtocol=http;AccountName=[YourStorageAccount];AccountKey=[YourAccountKey]" />
+      <Setting name="Dispatcher.EventHubConnectionString" value="Endpoint=sb://[YourServiceNamespace].servicebus.windows.net/;SharedAccessKeyName=[YourAccessKeyName];SharedAccessKey=[YourAccessKey];TransportType=Amqp" />
+      <Setting name="Dispatcher.EventHubName" value="[YourEventHubName]" />
+      <Setting name="Dispatcher.PoisonMessageStorageAccount" value="DefaultEndpointsProtocol=http;AccountName=[YourStorageAccount];AccountKey=[YourAccountKey]" />
+      <Setting name="Dispatcher.PoisonMessageContainer" value="posion-messages" />
+      <Setting name="Handler.LongRunningTaskDuration" value="0.00:01:00" />
+      <Setting name="Dispatcher.CircuitBreaker.WarningLevel" value="200" />
+      <Setting name="Dispatcher.CircuitBreaker.TripLevel" value="400" />
+      <Setting name="Dispatcher.CircuitBreaker.StallInterval" value="0.00:00:30" />
+      <Setting name="Dispatcher.CircuitBreaker.LogCooldownInterval" value="0.00:30:00" />
+    </ConfigurationSettings>
+    <Certificates>
+    </Certificates>
+  </Role>
+  <Role name="ColdStorage.WorkerRole">
+    <Instances count="1" />
+    <ConfigurationSettings>
+      <Setting name="Coldstorage.ConsumerGroupName" value="ColdStorage" />
+      <Setting name="Coldstorage.CheckpointStorageAccount" value="DefaultEndpointsProtocol=http;AccountName=[YourStorageAccount];AccountKey=[YourAccountKey]" />
+      <Setting name="Coldstorage.EventHubConnectionString" value="Endpoint=sb://[YourServiceNamespace].servicebus.windows.net/;SharedAccessKeyName=[YourAccessKeyName];SharedAccessKey=[YourAccessKey];TransportType=Amqp" />
+      <Setting name="Coldstorage.EventHubName" value="[YourEventHubName]" />
+      <Setting name="Coldstorage.MaxBatchSize" value="1000" />
+      <Setting name="Coldstorage.PreFetchCount" value="10000" />
+      <Setting name="Coldstorage.ReceiveTimeout" value="0.01:00:00" />
+      <Setting name="Coldstorage.BlobWriterStorageAccount" value="DefaultEndpointsProtocol=http;AccountName=[YourStorageAccount];AccountKey=[YourAccountKey]" />
+      <Setting name="Coldstorage.RollSizeForBlobWriterMb" value="2048" />
+      <Setting name="Coldstorage.ContainerName" value="coldstorage" />
+      <Setting name="Coldstorage.BlobPrefix" value="pnp-datapipeline" />
+      <Setting name="Coldstorage.circuitbreaker.WarningLevel" value="200" />
+      <Setting name="Coldstorage.circuitbreaker.TripLevel" value="400" />
+      <Setting name="Coldstorage.circuitbreaker.StallInterval" value="0.00:00:30" />
+      <Setting name="Coldstorage.circuitbreaker.LogCooldownInterval" value="0.00:15:00" />
+    </ConfigurationSettings>
+    <Certificates>
+    </Certificates>
+  </Role>
+</ServiceConfiguration>

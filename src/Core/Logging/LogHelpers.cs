@@ -1,0 +1,28 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Microsoft.Practices.DataPipeline.Logging
+{
+    public abstract class LogHelpers
+    {
+        public static void HandleRoleException(ILogger log, string roleMethod, Exception ex)
+        {
+            IEnumerable<Exception> exceptions;
+
+            if (ex is AggregateException)
+                exceptions = (ex as AggregateException).Flatten().InnerExceptions;
+            else
+                exceptions = new Exception[] {ex};
+
+            foreach (var e in exceptions)
+            {
+                EventLog.WriteEntry("Application Error", e.ToString(), EventLogEntryType.Error);
+                log.Error(e, "Could not run " + roleMethod);
+            }
+        }
+    }
+}

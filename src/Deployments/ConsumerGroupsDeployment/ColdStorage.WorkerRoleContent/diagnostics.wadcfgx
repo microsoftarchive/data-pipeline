@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DiagnosticsConfiguration xmlns="http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration">
+  <PublicConfig xmlns="http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration">
+    <WadCfg>
+      <DiagnosticMonitorConfiguration overallQuotaInMB="4096">
+        <DiagnosticInfrastructureLogs scheduledTransferLogLevelFilter="Error" />
+        <Directories scheduledTransferPeriod="PT1M">
+          <IISLogs containerName="wad-iis-logfiles" />
+          <FailedRequestLogs containerName="wad-failedrequestlogs" />
+          <DataSources>
+            <DirectoryConfiguration containerName="telemetry-logs">
+              <Absolute path="\Resources\Directory" expandEnvironment="false" />
+            </DirectoryConfiguration>
+          </DataSources>
+        </Directories>
+        <PerformanceCounters scheduledTransferPeriod="PT1M">
+          <PerformanceCounterConfiguration counterSpecifier="\Processor(_Total)\% Processor Time" sampleRate="PT3M" />
+          <PerformanceCounterConfiguration counterSpecifier="\Memory\Available MBytes" sampleRate="PT3M" />
+          <PerformanceCounterConfiguration counterSpecifier="\Process(WaWorkerHost)\% Processor Time" sampleRate="PT3M" />
+          <PerformanceCounterConfiguration counterSpecifier="\Process(WaWorkerHost)\Thread Count" sampleRate="PT3M" />
+          <PerformanceCounterConfiguration counterSpecifier="\.NET CLR LocksAndThreads(WaWorkerHost)\# of current logical Threads" sampleRate="PT3M" />
+          <PerformanceCounterConfiguration counterSpecifier="\.NET CLR LocksAndThreads(WaWorkerHost)\# of current physical Threads" sampleRate="PT3M" />
+          <PerformanceCounterConfiguration counterSpecifier="\.NET CLR LocksAndThreads(WaWorkerHost)\# of current recognized threads" sampleRate="PT3M" />
+          <PerformanceCounterConfiguration counterSpecifier="\.NET CLR LocksAndThreads(WaWorkerHost)\# of total recognized threads" sampleRate="PT3M" />
+          <PerformanceCounterConfiguration counterSpecifier="\.NET CLR Memory(WaWorkerHost)\# GC Handles" sampleRate="PT3M" />
+          <PerformanceCounterConfiguration counterSpecifier="\.NET CLR Memory(WaWorkerHost)\# Gen 0 Collections" sampleRate="PT3M" />
+          <PerformanceCounterConfiguration counterSpecifier="\.NET CLR Memory(WaWorkerHost)\# Gen 1 Collections" sampleRate="PT3M" />
+          <PerformanceCounterConfiguration counterSpecifier="\.NET CLR Memory(WaWorkerHost)\# Gen 2 Collections" sampleRate="PT3M" />
+          <PerformanceCounterConfiguration counterSpecifier="\.NET CLR Networking 4.0.0.0\Bytes Received" sampleRate="PT3M" />
+          <PerformanceCounterConfiguration counterSpecifier="\.NET CLR Networking 4.0.0.0\Bytes Sent" sampleRate="PT3M" />
+          <PerformanceCounterConfiguration counterSpecifier="\.NET CLR Networking 4.0.0.0\Connections Established" sampleRate="PT3M" />
+          <PerformanceCounterConfiguration counterSpecifier="\.NET CLR Networking 4.0.0.0\Datagrams Received" sampleRate="PT3M" />
+          <PerformanceCounterConfiguration counterSpecifier="\.NET CLR Networking 4.0.0.0\Datagrams Sent" sampleRate="PT3M" />
+          <PerformanceCounterConfiguration counterSpecifier="\Network Interface(Microsoft Hyper-V Network Adapter)\Bytes Received/sec" sampleRate="PT3M" />
+          <PerformanceCounterConfiguration counterSpecifier="\Network Interface(Microsoft Hyper-V Network Adapter)\Bytes Sent/sec" sampleRate="PT3M" />
+          <PerformanceCounterConfiguration counterSpecifier="\Network Interface(Microsoft Hyper-V Network Adapter)\Bytes Total/sec" sampleRate="PT3M" />
+          <PerformanceCounterConfiguration counterSpecifier="\Network Interface(Microsoft Hyper-V Network Adapter)\Current Bandwidth" sampleRate="PT3M" />
+          <PerformanceCounterConfiguration counterSpecifier="\Processor(_Total)\% User Time" sampleRate="PT3M" />
+          <PerformanceCounterConfiguration counterSpecifier="\Process(WaWorkerHost)\% Privileged Time" sampleRate="PT3M" />
+          <PerformanceCounterConfiguration counterSpecifier="\Process(WaWorkerHost)\% User Time" sampleRate="PT3M" />
+          <PerformanceCounterConfiguration counterSpecifier="\Process(WaWorkerHost)\Elapsed Time" sampleRate="PT3M" />
+          <PerformanceCounterConfiguration counterSpecifier="\Process(WaWorkerHost)\Handle Count" sampleRate="PT3M" />
+          <PerformanceCounterConfiguration counterSpecifier="\Process(WaWorkerHost)\Virtual Bytes" sampleRate="PT3M" />
+          <PerformanceCounterConfiguration counterSpecifier="\Process(WaWorkerHost)\Virtual Bytes Peak" sampleRate="PT3M" />
+          <PerformanceCounterConfiguration counterSpecifier="\Process(WaWorkerHost)\Working Set" sampleRate="PT3M" />
+          <PerformanceCounterConfiguration counterSpecifier="\Process(WaWorkerHost)\Working Set - Private" sampleRate="PT3M" />
+          <PerformanceCounterConfiguration counterSpecifier="\EventHub ColdStorage(WaWorkerHost)\Average write time" sampleRate="PT3M" />
+          <PerformanceCounterConfiguration counterSpecifier="\EventHub ColdStorage(WaWorkerHost)\Current cache size in blocks" sampleRate="PT3M" />
+          <PerformanceCounterConfiguration counterSpecifier="\EventHub ColdStorage(WaWorkerHost)\Total blocks written" sampleRate="PT3M" />
+          <PerformanceCounterConfiguration counterSpecifier="\EventHub ColdStorage(WaWorkerHost)\Total concurrent writes failed" sampleRate="PT3M" />
+          <PerformanceCounterConfiguration counterSpecifier="\EventHub ColdStorage(WaWorkerHost)\Total write attempts" sampleRate="PT3M" />
+          <PerformanceCounterConfiguration counterSpecifier="\EventHub ColdStorage(WaWorkerHost)\Total writes failed" sampleRate="PT3M" />
+          <PerformanceCounterConfiguration counterSpecifier="\EventHub ColdStorage(WaWorkerHost)\Total writes succeeded" sampleRate="PT3M" />
+          <PerformanceCounterConfiguration counterSpecifier="\EventHub ColdStorage(WaWorkerHost)\Total leases lost" sampleRate="PT3M" />
+          <PerformanceCounterConfiguration counterSpecifier="\EventHub ColdStorage(WaWorkerHost)\Total leases obtained" sampleRate="PT3M" />
+          <PerformanceCounterConfiguration counterSpecifier="\EventHub ColdStorage(WaWorkerHost)\Total events processed" sampleRate="PT3M" />
+          <PerformanceCounterConfiguration counterSpecifier="\Service Bus Messaging Client(*)\MessageFactory Count" sampleRate="PT3M" />
+          <PerformanceCounterConfiguration counterSpecifier="\Service Bus Messaging Client(*)\Exceptions/sec" sampleRate="PT3M" />
+          <PerformanceCounterConfiguration counterSpecifier="\Service Bus Messaging Client(*)\ReceiveMessage Success Count" sampleRate="PT3M" />
+          <PerformanceCounterConfiguration counterSpecifier="\Service Bus Messaging Client(*)\ReceiveMessage Success/sec" sampleRate="PT3M" />
+          <PerformanceCounterConfiguration counterSpecifier="\Service Bus Messaging Client(*)\ReceiveMessage Failures/sec" sampleRate="PT3M" />
+          <PerformanceCounterConfiguration counterSpecifier="\Service Bus Messaging Client(*)\ReceiveMessage Latency" sampleRate="PT3M" />
+        </PerformanceCounters>
+        <WindowsEventLog scheduledTransferPeriod="PT1M">
+          <DataSource name="Application!*" />
+        </WindowsEventLog>
+        <CrashDumps>
+          <CrashDumpConfiguration processName="WaIISHost.exe" />
+          <CrashDumpConfiguration processName="WaWorkerHost.exe" />
+          <CrashDumpConfiguration processName="w3wp.exe" />
+        </CrashDumps>
+        <Logs scheduledTransferPeriod="PT1M" scheduledTransferLogLevelFilter="Error" />
+      </DiagnosticMonitorConfiguration>
+    </WadCfg>
+    <StorageAccount />
+  </PublicConfig>
+  <PrivateConfig xmlns="http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration">
+    <StorageAccount name="" endpoint="" />
+  </PrivateConfig>
+  <IsEnabled>true</IsEnabled>
+</DiagnosticsConfiguration>

@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ServiceDefinition name="ConsumerGroupsDeployment" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition" schemaVersion="2014-06.2.4">
+  <WorkerRole name="Cars.Dispatcher.WorkerRole" vmsize="Small">
+    <Startup>
+      <Task taskType="simple" executionContext="elevated" commandLine="setup\install.cmd">
+      </Task>
+    </Startup>
+    <ConfigurationSettings>
+      <Setting name="Dispatcher.ConsumerGroupName" />
+      <Setting name="Dispatcher.CheckpointStorageAccount" />
+      <Setting name="Dispatcher.EventHubConnectionString" />
+      <Setting name="Dispatcher.EventHubName" />
+      <Setting name="Dispatcher.MaxBatchSize" />
+      <Setting name="Dispatcher.PrefetchCount" />
+      <Setting name="Dispatcher.ReceiveTimeout" />
+      <Setting name="Dispatcher.MaxConcurrencyPerProcessor" />
+      <Setting name="Dispatcher.PoisonMessageStorageAccount" />
+      <Setting name="Dispatcher.PoisonMessageContainer" />
+      <Setting name="Handler.LongRunningTaskDuration" />
+      <Setting name="Dispatcher.CircuitBreaker.WarningLevel" />
+      <Setting name="Dispatcher.CircuitBreaker.TripLevel" />
+      <Setting name="Dispatcher.CircuitBreaker.StallInterval" />
+      <Setting name="Dispatcher.CircuitBreaker.LogCooldownInterval" />
+    </ConfigurationSettings>
+    <Runtime>
+      <Environment>
+        <Variable name="TelemetryLogsPath">
+          <RoleInstanceValue xpath="/RoleEnvironment/CurrentInstance/LocalResources/LocalResource[@name='TelemetryArchive']/@path" />
+        </Variable>
+      </Environment>
+    </Runtime>
+    <LocalResources>
+      <LocalStorage name="TelemetryArchive" cleanOnRoleRecycle="false" />
+    </LocalResources>
+  </WorkerRole>
+  <WorkerRole name="ColdStorage.WorkerRole" vmsize="Small">
+    <Startup>
+      <Task taskType="simple" executionContext="elevated" commandLine="setup\install.cmd">
+      </Task>
+    </Startup>
+    <ConfigurationSettings>
+      <Setting name="Coldstorage.ConsumerGroupName" />
+      <Setting name="Coldstorage.CheckpointStorageAccount" />
+      <Setting name="Coldstorage.EventHubConnectionString" />
+      <Setting name="Coldstorage.EventHubName" />
+      <Setting name="Coldstorage.MaxBatchSize" />
+      <Setting name="Coldstorage.PreFetchCount" />
+      <Setting name="Coldstorage.ReceiveTimeout" />
+      <Setting name="Coldstorage.BlobWriterStorageAccount" />
+      <Setting name="Coldstorage.RollSizeForBlobWriterMb" />
+      <Setting name="Coldstorage.ContainerName" />
+      <Setting name="Coldstorage.BlobPrefix" />
+      <Setting name="Coldstorage.circuitbreaker.WarningLevel" />
+      <Setting name="Coldstorage.circuitbreaker.TripLevel" />
+      <Setting name="Coldstorage.circuitbreaker.StallInterval" />
+      <Setting name="Coldstorage.circuitbreaker.LogCooldownInterval" />
+    </ConfigurationSettings>
+    <Runtime>
+      <Environment>
+        <Variable name="TelemetryLogsPath">
+          <RoleInstanceValue xpath="/RoleEnvironment/CurrentInstance/LocalResources/LocalResource[@name='TelemetryArchive']/@path" />
+        </Variable>
+      </Environment>
+    </Runtime>
+    <LocalResources>
+      <LocalStorage name="TelemetryArchive" cleanOnRoleRecycle="false" />
+    </LocalResources>
+  </WorkerRole>
+</ServiceDefinition>

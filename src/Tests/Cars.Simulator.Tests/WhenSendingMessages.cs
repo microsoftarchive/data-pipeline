@@ -1,0 +1,35 @@
+﻿namespace Cars.Simulator.Tests
+{
+    using Microsoft.Practices.DataPipeline.Cars.Messages;
+    using Microsoft.Practices.DataPipeline.Cars.Simulator;
+
+    using Xunit;
+
+    public class WhenSendingMessages
+    {
+        [Fact]
+        [Trait("Running time", "Short")]
+        public void MessageTypeWillBeShortTypeName()
+        {
+            // This assumes that the event consumers are 
+            // making the same choice.
+            var msg = new UpdateLocationMessage();
+            var expected = msg.GetType().Name;
+            var actual = MessageSender.DetermineTypeFromMessage(msg);
+
+            Assert.Equal(expected, actual.Item1);
+        }
+
+        [Fact]
+        [Trait("Running time", "Short")]
+        public void MessageTypeVersionAlwaysReturns1()
+        {
+            // TODO: The final system should not be hard coded
+            var msg = new UpdateLocationMessage();
+
+            var actual = MessageSender.DetermineTypeFromMessage(msg);
+
+            Assert.Equal(1, actual.Item2);
+        }
+    }
+}
