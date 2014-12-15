@@ -67,23 +67,5 @@
             // Act & Assert
             Assert.DoesNotThrow(async () => await processor.ProcessEventsAsync(context, events));
         }
-
-        public void ProcessEventAsyncDoesNotThrowOnException()
-        {
-            // Arrange
-            var mockLogger = new Mock<ILogger>();
-            LoggerFactory.Register(Mock.Of<ILogFactory>(f => f.Create(It.IsAny<string>()) == mockLogger.Object));
-            var mockCircuitBreaker = new MockCircuitBreaker();
-            var mockResolver = new Mock<IMessageHandlerResolver>();
-            mockResolver.Setup(r => r.GetHandler(It.IsAny<Dictionary<string, string>>(), It.IsAny<string>())).Throws(new Exception("resolver exception"));
-
-            var processor = new EventProcessor(mockResolver.Object, mockCircuitBreaker, MaxConcurrency, EventHubName, Mock.Of<IDispatcherInstrumentationPublisher>());
-            
-            var context = MockPartitionContext.CreateWithNoopCheckpoint("0");
-            var events = new[] { new EventData() };
-
-            // Act & Assert
-            Assert.DoesNotThrow(async () => await processor.ProcessEventsAsync(context, events));
-        }
     }
 }
