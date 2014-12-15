@@ -6,10 +6,10 @@
     using System.Text;
     using System.Threading;
     using System.Threading.Tasks;
-
     using Microsoft.Practices.DataPipeline.Cars.Messages;
     using Microsoft.Practices.DataPipeline.ColdStorage.Instrumentation;
     using Microsoft.Practices.DataPipeline.Logging;
+    using Microsoft.Practices.DataPipeline.Tests;
     using Microsoft.Practices.DataPipeline.Tests.Helpers;
     using Microsoft.Practices.DataPipeline.Tests.Mocks;
     using Microsoft.ServiceBus.Messaging;
@@ -464,6 +464,75 @@
 
             Assert.Equal(new string('d', 400), (JsonConvert.DeserializeObject<ColdStorageEvent>(lines[0])).Payload);
             Assert.Equal(new string('e', 300), (JsonConvert.DeserializeObject<ColdStorageEvent>(lines[1])).Payload);
+        }
+
+        [Fact]
+        [Trait("Running time", "Short")]
+        [Trait("Kind", "Unit")]
+        public async Task WhenUnableToCheckpointWithStorageExceptionThenLogs()
+        {
+            // Arrange
+            var context = MockPartitionContext.Create("0", () =>
+                {
+                    throw new StorageException();
+                });
+            
+            var processor =
+               new ColdStorageProcessor(
+                   n => _writerMock.Object,
+                   Mock.Of<IColdStorageInstrumentationPublisher>(),
+                   CancellationToken.None,
+                   CircuitBreakerWarningLevel,
+                   CircuitBreakerStallLevel,
+                   CircuitBreakerStallInterval,
+                   TimeSpan.FromSeconds(200),
+                   "Test",
+                   maxBlockSize: MaxBlockSize);
+
+            _writerMock
+                .Setup(w => w.WriteAsync(It.IsAny<IReadOnlyCollection<BlockData>>(), It.IsAny<CancellationToken>()))
+                .Returns(() => TaskHelpers.CreateCompletedTask(true));
+                
+            await processor.OpenAsync(context);
+
+            // Act
+            Assert.DoesNotThrow(async () => await processor.ProcessEventsAsync(context, new[] 
+                {
+                    CreateEventData((byte)'a', 100),
+                    CreateEventData((byte)'b', 200),
+                    CreateEventData((byte)'c', 300),
+                    CreateEventData((byte)'d', 400),
+                }));
+        }
+
+        [Fact]
+        [Trait("Running time", "Short")]
+        [Trait("Kind", "Unit")]
+        public async Task WhenUnableToCheckpointWithExceptionThenThrows()
+        {
+            // Arrange
+            var context = MockPartitionContext.Create("0", () =>
+            {
+                throw new InvalidOperationException();
+            });
+
+            _writerMock
+                .Setup(w => w.WriteAsync(It.IsAny<IReadOnlyCollection<BlockData>>(), It.IsAny<CancellationToken>()))
+                .Returns(() => TaskHelpers.CreateCompletedTask(true));
+
+            await _processor.OpenAsync(context);
+
+            // Act
+            await AssertExt.ThrowsAsync<InvalidOperationException>(() => _processor.ProcessEventsAsync(context, new[] 
+                {
+                    CreateEventData((byte)'a', 100),
+                    CreateEventData((byte)'b', 200),
+                    CreateEventData((byte)'c', 300),
+                    CreateEventData((byte)'d', 400),
+                }));
+
+            // Assert
+            _loggerMock.Verify(l => l.Warning(It.IsAny<Exception>(), It.IsAny<string>(), It.IsAny<object[]>()), Times.Never);
         }
 
         private static EventData CreateEventData(byte content, int length)
