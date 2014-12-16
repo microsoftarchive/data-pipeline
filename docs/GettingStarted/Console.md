@@ -4,7 +4,7 @@ This page describes how you can configure and run the RI locally as a set of con
 
 > Note: There are some common requisite steps for all three deployment scenarios. For more information, see [Getting Started with the Reference Implementation][gettingstarted].
 
-Before you run the RI console applications, you must provide some additional configuration data to enable the console apps to connect to the Event Hub service and the Development Storage emulator. 
+Before you run the RI console applications, you must provide some additional configuration data to enable the console apps to connect to the Event Hub service and the Development Storage emulator.
 
 ## Adding the configuration data
 
@@ -81,7 +81,7 @@ You can find the three console apps in the folder **RunFromConsole** in the solu
 Run the **Cars.Simulator.ConsoleHost** app to start generating a stream of sample events that the app sends to your Event Hub. The app prompts you to run a simulation scenario:
 
     Cars.Simulator.ConsoleHost
-    
+
     [1] Run NoErrorsExpected
     [2] Run MessagesWithNoHandler
     [3] Run MalformedMessages
@@ -91,7 +91,7 @@ Run the **Cars.Simulator.ConsoleHost** app to start generating a stream of sampl
     [7] Send 1 message from MalformedMessages
     [8] Send 1 message from LongRunningMessages
     [9] Exit
-    
+
     Select an option:
 
 Select the scenario you want to run.
@@ -99,11 +99,11 @@ Select the scenario you want to run.
 Run the **ColdStorage.ConsoleHost** app to receive events from your Event Hub and persist them to blob storage. The first time you run the app you should choose option 1 to create the Event Hub consumer group **ColdStorage** and blob containers in your storage account before you choose option 2 to start consuming events:
 
     ColdStorage.Tests.ConsoleHost
-    
+
     [1] Provision Resources
     [2] Run Cold Storage Consumer
     [3] Exit
-    
+
     Select an option:
 
 When you finish running the Cold Storage Consumer, you can find the persisted events in the **coldstorage** blob container in the Azure Storage emulator.
@@ -111,11 +111,11 @@ When you finish running the Cold Storage Consumer, you can find the persisted ev
 Run the **DispatchingProcessor.ConsoleHost** app the receive events from Event Hub and dispatch them to the handlers. The first time you run the app you should choose option 1 to create the Event Hub consumer group **DispatchingProcessor** and blob containers in your storage account before you choose option 2 to start consuming events:
 
     DispatchingProcessor.ConsoleHost
-    
+
     [1] Provision Resources
     [2] Run Dispatching Processor
     [3] Exit
-    
+
     Select an option:
 
 ## Output from the console apps
@@ -132,10 +132,10 @@ You can find the log files from the RI in the **logs** folder on your system dri
 
 - **ApplicationLog_*.txt** contains basic information about the running app.
 - **ApiTraceLog.log** contains detailed information about the activities of the app.
- 
+
 You can find the log configuration in the **NLog.config** file in the Visual Studio solution.
 
 
-[gettingstarted]: /TBD
+[gettingstarted]: ../GettingStarted.md
 
 [usingstorageemulator]: http://msdn.microsoft.com/en-us/library/azure/hh403989.aspx

@@ -8,7 +8,7 @@ Note: This description assumes a "real-world" deployment to Microsoft Azure. For
 
 ## Cars.Simulator.WorkerRole
 
-The solution includes the **Cars.Simulator.WorkerRole** worker role that acts as an event producer to enable you to generate a stream of events that are sent to your Event Hub from a set of simulated devices (cars). You can configure the simulation using parameters such as the number of simulated devices to use and the duration of the simulation. You can also select a simulation scenario that determines what types of event the simulator generates, such long-running or malformed events. The **Cars.Dispatcher.WorkerRole** processor delivers different event types to different handlers. 
+The solution includes the **Cars.Simulator.WorkerRole** worker role that acts as an event producer to enable you to generate a stream of events that are sent to your Event Hub from a set of simulated devices (cars). You can configure the simulation using parameters such as the number of simulated devices to use and the duration of the simulation. You can also select a simulation scenario that determines what types of event the simulator generates, such long-running or malformed events. The **Cars.Dispatcher.WorkerRole** processor delivers different event types to different handlers.
 
 Each car simulator instance uses a unique partition id when it sends events to the Event Hub. Partition ids do not map directly to partitions in Event Hub. You can have many more partition ids than partitions; Event Hub uses a hash of the partition id to determine which partition should process events with a particular partition id.
 
@@ -26,7 +26,7 @@ The **Cars.Dispatcher.WorkerRole** worker role instances use the **Dispatcher** 
 
 ## Handlers
 
-The solution includes four sample handlers for the events that the **Cars.Dispatcher.WorkerRole** worker role instances receive from the Event Hub. 
+The solution includes four sample handlers for the events that the **Cars.Dispatcher.WorkerRole** worker role instances receive from the Event Hub.
 
 - The **LongRunningHandler** deliberately waits when it is invoked to simulate a slow downstream service.
 - The **ThrowsExceptionHandler** deliberately throws an exception in order to test how the solution handles this scenario.
@@ -35,7 +35,7 @@ The solution includes four sample handlers for the events that the **Cars.Dispat
 
 All the handlers implement the **IMessageHandler** interface, and the **Cars.Dispatcher.WorkerRole** worker role scans for classes that implement this type when it initializes. The **Cars.Dispatcher.WorkerRole** worker role uses a custom attribute on the handler class to identify the event type(s) it should handle.
 
-There are also two built-in handlers (not shown on the diagram): **AzureBlobPoisonMessageHandler** and **UnknownTypeMessageHandler**. 
+There are also two built-in handlers (not shown on the diagram): **AzureBlobPoisonMessageHandler** and **UnknownTypeMessageHandler**.
 
 ## ColdStorage.WorkerRole
 
@@ -49,7 +49,7 @@ Each **ColdStorageProcessor** instance uses a **RollingBlobWriter** instance to 
 
 ## Instrumentation
 
-The code in the  **Cars.DispatcherHost** worker role, the **Cars.DispatcherHost** worker role, and the **Cars.SimulatorHost** worker role uses custom performance counters that are automatically installed when you deploy the solution to Azure. These custom performance counters enable you to monitor the activities of the three worker roles. For example, you can monitor the number of processed events and the number of timeouts while the worker roles are processing the events. This configuration in the **diagnostics.wadcfgx** files ensures that the custom performance monitor counter values are copied to the  **WADPerformanceCountersTable** in your diagnostics storage account. 
+The code in the  **Cars.DispatcherHost** worker role, the **Cars.DispatcherHost** worker role, and the **Cars.SimulatorHost** worker role uses custom performance counters that are automatically installed when you deploy the solution to Azure. These custom performance counters enable you to monitor the activities of the three worker roles. For example, you can monitor the number of processed events and the number of timeouts while the worker roles are processing the events. This configuration in the **diagnostics.wadcfgx** files ensures that the custom performance monitor counter values are copied to the  **WADPerformanceCountersTable** in your diagnostics storage account.
 
 The three worker roles also include configuration to collect standard Azure performance data. For more details, see the **diagnostics.wadcfgx** files in the projects.
 
@@ -86,7 +86,7 @@ An HDInsight cluster enables you to run Hive queries to analyze the event data t
 
 
 
-[gettingstartedpage]: /TBD
-[eventhubpage]: /TBD
+[gettingstartedpage]: GettingStarted.md
+[eventhubpage]: EventHubService.md
 
 [architectureoverview]: Figures/02-architectureoverview.png

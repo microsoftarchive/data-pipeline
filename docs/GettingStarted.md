@@ -22,8 +22,6 @@ To build and run the RI you will need Visual Studio 2013 Professional or above a
 
 Download the source and verify that you can build it in your local development environment. The solution uses the NuGet package manager to download and install its dependencies automatically.
 
-You can download the source code as a ZIP file here [RI Source][rizipdownload].
-
 ### 3. Provision your environment
 
 All three deployment options use an Event Hub which you must configure before you run the RI. You can configure an Event Hub manually using the Azure Management portal but we recommend you use the **ProvisionAssets.ps1** PowerShell script located in the **Deployment** folder included in the Visual Studio solution you downloaded. This script also provisions the Azure Storage account that deployment option #3 requires and modifies the configuration files in your Visual Studio solution to include details of the Event Hub and Storage account.
@@ -63,10 +61,9 @@ For more information about how to run the RI as a set of console apps, see [Depl
 
 
 
-[architectureoverviewpage]: /TBD
-[rizipdownload]: /TBD
-[deploymentconsole]: /TBD
-[deploymentemulator]: /TBD
-[deploymentcloud]: /TBD
+[architectureoverviewpage]: ArchitectureOverview.md
+[deploymentconsole]: GettingStarted/Console.md
+[deploymentemulator]: GettingStarted/Emulator.md
+[deploymentcloud]: GettingStarted/Cloud.md
 
 [installazurepowershell]: http://azure.microsoft.com/en-us/documentation/articles/install-configure-powershell/
