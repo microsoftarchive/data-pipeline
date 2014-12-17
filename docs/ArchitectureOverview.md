@@ -81,7 +81,7 @@ The **Cars.Dispatcher.WorkerRole** worker role instances use this storage accoun
 
 ## HDInsight cluster
 
-An HDInsight cluster enables you to run Hive queries to analyze the event data that the solution persists in the **ColdStorage.BlobWriterStorageAccount**. You must configure your HDInsight cluster in your Azure subscription before you can run a Hive query. The solution includes a sample Hive query in the PowerShell script file **hivequery.ps1**. You can run this query from your on premises environment to query the data in clod storage.
+An HDInsight cluster enables you to run Hive queries to analyze the event data that the solution persists in the **ColdStorage.BlobWriterStorageAccount**. You must configure your HDInsight cluster in your Azure subscription before you can run a Hive query. The solution includes a sample Hive query in the PowerShell script file **hivequery.ps1**. You can run this query from your on premises environment to query the data in cold storage.
 
 
 
