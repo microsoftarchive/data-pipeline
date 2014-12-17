@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <ServiceConfiguration serviceName="SimulatorDeployment" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceConfiguration" osFamily="4" osVersion="*" schemaVersion="2014-06.2.4">
   <Role name="Cars.Simulator.WorkerRole">
     <Instances count="1" />
@@ -8,8 +8,8 @@
       <Setting name="Simulator.ScenarioDuration" value="00:10:00" />
       <Setting name="Simulator.SenderCountPerInstance" value="10" />
       <Setting name="Simulator.WarmUpDuration" value="0.00:00:30" />
-      <Setting name="Simulator.EventHubConnectionString" value="Endpoint=sb://[YourServiceNamespace].servicebus.windows.net/;SharedAccessKeyName=[YourAccessKeyName];SharedAccessKey=[YourAccessKey];TransportType=Amqp" />
-      <Setting name="Simulator.EventHubPath" value="[YourEventHubName]" />
+      <Setting name="Simulator.EventHubConnectionString" value="Endpoint=sb://larryns3.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=bC9zJ6sFdgKuAEUWpOjX9FPxKIHrZxB51jYus8sNFrE=;TransportType=Amqp" />
+      <Setting name="Simulator.EventHubPath" value="larryeventhub3" />
     </ConfigurationSettings>
     <Certificates>
     </Certificates>

@@ -22,11 +22,19 @@ To build and run the RI you will need Visual Studio 2013 Professional or above a
 
 Download the source and verify that you can build it in your local development environment. The solution uses the NuGet package manager to download and install its dependencies automatically.
 
+<font color="red"> Larry: When you build it for the first time you'll get 3 errors. This is because the 'mysettings.config' has to be created. Which is done in the next section.</font>
+
 ### 3. Provision your environment
 
 All three deployment options use an Event Hub which you must configure before you run the RI. You can configure an Event Hub manually using the Azure Management portal but we recommend you use the **ProvisionAssets.ps1** PowerShell script located in the **Deployment** folder included in the Visual Studio solution you downloaded. This script also provisions the Azure Storage account that deployment option #3 requires and modifies the configuration files in your Visual Studio solution to include details of the Event Hub and Storage account.
 
-This script prompts prompts you for the following information:
+<font color="red"> 
+All three deployment options use an Event Hub which you must configure before you run the RI. You can configure an Event Hub manually using the Azure Management portal but we recommend you use the **ProvisionAssets.ps1** PowerShell script located in the **Deployment** folder included in the Visual Studio solution you downloaded. This script will provision 2 of the deployment scenario's, #1 Console deployment and #3 Azure deployment. The #2 Emulator deployment can use Azure deployment configuration. See Getting Started for the Emulator.
+
+
+This script will provision only 2 of the deployment scenario's, which are:
+</font>
+
 
 - **SubscriptionName**: The name of your Azure subscription. You will need your credentials to sign in.
 - **ServiceBusNamespace**: The unique name of the Service Bus Namespace to create  or use. For example, *mysbnamespace*.
@@ -49,6 +57,26 @@ This script updates the following files in your Visual Studio solution:
 
 - **mysettings.config**: This file holds the configuration settings used by deployment option #1 when you run the console apps locally.
 - The **ServiceConfiguration.Cloud.cscfg** files in the two cloud services (**SimulatorDeployment** and **ConsumerGroupsDeployment**) in your Visual Studio solution: These files hold the configuration settings used by deployment option #3 when you deploy the RI to the cloud.
+
+<font color=red>Larry: need a section for unit test.</font>
+
+<font color=red>
+### 4. Run Unit Test
+
+To get all the unit test to pass you must provision some account information in the **app.config** file for the **ColdStorage.BlobWriter.Tests Projet** in the **Test** folder.
+
+
+Requires the following information:
+
+- Storage Account Name
+- Account Key 
+
+### 5. Run the Console Provision before deploying any scenario
+
+The first time you should run the **ColdStorage.ConsoleHost** and **DispatchingProcessor.ConsoleHost** Provision Resources to insure the deployment configuration is up and running. See GettingStartedDeploymentOption1.md.
+
+</font>
+
 
 ## Using the different deployment options
 

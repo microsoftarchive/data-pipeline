@@ -75,6 +75,12 @@ The template file, **my-settings-template.config**, contains placeholders for al
 Before you run the RI console apps for the first time, ensure that the Azure Storage Emulator is running. For more information, see [Using the Azure Storage Emulator for Development and Testing][usingstorageemulator].
 
 You can find the three console apps in the folder **RunFromConsole** in the solution.
+<font color=red> They are:
+
+- Cars.Simulator.ConsoleHost 
+- ColdStorage.ConsoleHost 
+- DispatchingProcessor.ConsoleHost
+</font>
 
 > Note. The first time you run the console apps you should run them with *administrator* permissions in order to install the custom performance counters on your local machine. The console apps dispaly error messages if they cannot create the custom performance counters.
 
