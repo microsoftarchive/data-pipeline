@@ -91,15 +91,15 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\ColdStorage.EventProcessorHost\ColdStorage.EventHubHost.csproj">
+    <ProjectReference Include="..\..\Implementation\ColdStorage\ColdStorage.EventProcessorHost\ColdStorage.EventProcessorHost.csproj">
       <Project>{6d15d1ef-a00c-4e2e-aefb-6da23bea107f}</Project>
-      <Name>ColdStorage.EventHubHost</Name>
+      <Name>ColdStorage.EventProcessorHost</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Core\Core.csproj">
+    <ProjectReference Include="..\..\Implementation\Shared\Core\Core.csproj">
       <Project>{b3657b80-640f-4d72-885e-e9f9729bac18}</Project>
       <Name>Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Tests\Tests.Common\Tests.Common.csproj">
+    <ProjectReference Include="..\..\Implementation\Shared\Tests.Common\Tests.Common.csproj">
       <Project>{769c50c0-1627-4834-824a-a77b2c303f9d}</Project>
       <Name>Tests.Common</Name>
     </ProjectReference>

@@ -110,23 +110,23 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Cars.Handlers\Cars.Handlers.csproj">
+    <ProjectReference Include="..\..\Implementation\Dispatcher\Cars.Handlers\Cars.Handlers.csproj">
       <Project>{cc768278-d680-4f43-ab00-f67861b4a438}</Project>
       <Name>Cars.Handlers</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Cars.Messages\Cars.Messages.csproj">
+    <ProjectReference Include="..\..\Implementation\Shared\Cars.Messages\Cars.Messages.csproj">
       <Project>{879fc82c-62a5-4ea7-a0d0-34968b2bd4ec}</Project>
       <Name>Cars.Messages</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\DispatchingProcessor\DispatchingProcessor.csproj">
+    <ProjectReference Include="..\..\Implementation\Dispatcher\Dispatcher.EventProcessorHost\Dispatcher.EventProcessorHost.csproj">
       <Project>{894282da-019a-4878-8c35-a39714d28dc7}</Project>
-      <Name>DispatchingProcessor</Name>
+      <Name>Dispatcher.EventProcessorHost</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Core\Core.csproj">
+    <ProjectReference Include="..\..\Implementation\Shared\Core\Core.csproj">
       <Project>{b3657b80-640f-4d72-885e-e9f9729bac18}</Project>
       <Name>Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Tests\Tests.Common\Tests.Common.csproj">
+    <ProjectReference Include="..\..\Implementation\Shared\Tests.Common\Tests.Common.csproj">
       <Project>{769c50c0-1627-4834-824a-a77b2c303f9d}</Project>
       <Name>Tests.Common</Name>
     </ProjectReference>

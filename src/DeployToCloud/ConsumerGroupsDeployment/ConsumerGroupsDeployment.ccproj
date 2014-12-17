@@ -46,14 +46,14 @@
     <DiagnosticsConfiguration Include="ColdStorage.WorkerRoleContent\diagnostics.wadcfgx" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Cars.Dispatcher.WorkerRole\Cars.Dispatcher.WorkerRole.csproj">
+    <ProjectReference Include="..\..\Implementation\Dispatcher\Cars.Dispatcher.WorkerRole\Cars.Dispatcher.WorkerRole.csproj">
       <Name>Cars.Dispatcher.WorkerRole</Name>
       <Project>{a8350e56-2c64-49c5-935d-b8933d5fbb73}</Project>
       <Private>True</Private>
       <RoleType>Worker</RoleType>
       <RoleName>Cars.Dispatcher.WorkerRole</RoleName>
     </ProjectReference>
-    <ProjectReference Include="..\..\ColdStorage.WorkerRole\ColdStorage.WorkerRole.csproj">
+    <ProjectReference Include="..\..\Implementation\ColdStorage\ColdStorage.WorkerRole\ColdStorage.WorkerRole.csproj">
       <Name>ColdStorage.WorkerRole</Name>
       <Project>{8d14c4fa-546e-49f7-9656-f61d3c12271b}</Project>
       <Private>True</Private>

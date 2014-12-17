@@ -32,7 +32,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Newtonsoft.Json.6.0.6\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\..\..\packages\Newtonsoft.Json.6.0.6\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -42,7 +42,7 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
     <Reference Include="xunit">
-      <HintPath>..\..\packages\xunit.1.9.2\lib\net20\xunit.dll</HintPath>
+      <HintPath>..\..\..\packages\xunit.1.9.2\lib\net20\xunit.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -51,19 +51,19 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Cars.Handlers\Cars.Handlers.csproj">
+    <ProjectReference Include="..\Cars.Handlers\Cars.Handlers.csproj">
       <Project>{cc768278-d680-4f43-ab00-f67861b4a438}</Project>
       <Name>Cars.Handlers</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Cars.Messages\Cars.Messages.csproj">
+    <ProjectReference Include="..\..\Shared\Cars.Messages\Cars.Messages.csproj">
       <Project>{879fc82c-62a5-4ea7-a0d0-34968b2bd4ec}</Project>
       <Name>Cars.Messages</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\DispatchingProcessor\DispatchingProcessor.csproj">
+    <ProjectReference Include="..\Dispatcher.EventProcessorHost\Dispatcher.EventProcessorHost.csproj">
       <Project>{894282da-019a-4878-8c35-a39714d28dc7}</Project>
-      <Name>DispatchingProcessor</Name>
+      <Name>Dispatcher.EventProcessorHost</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Tests.Common\Tests.Common.csproj">
+    <ProjectReference Include="..\..\Shared\Tests.Common\Tests.Common.csproj">
       <Project>{769c50c0-1627-4834-824a-a77b2c303f9d}</Project>
       <Name>Tests.Common</Name>
     </ProjectReference>

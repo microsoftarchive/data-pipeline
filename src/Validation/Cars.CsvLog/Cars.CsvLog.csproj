@@ -84,7 +84,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Cars.Handlers\Cars.Handlers.csproj">
+    <ProjectReference Include="..\..\Implementation\Dispatcher\Cars.Handlers\Cars.Handlers.csproj">
       <Project>{cc768278-d680-4f43-ab00-f67861b4a438}</Project>
       <Name>Cars.Handlers</Name>
     </ProjectReference>

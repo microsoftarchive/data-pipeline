@@ -39,7 +39,7 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
     <Reference Include="xunit">
-      <HintPath>..\..\packages\xunit.1.9.2\lib\net20\xunit.dll</HintPath>
+      <HintPath>..\..\..\packages\xunit.1.9.2\lib\net20\xunit.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -52,11 +52,11 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Cars.Messages\Cars.Messages.csproj">
+    <ProjectReference Include="..\..\Shared\Cars.Messages\Cars.Messages.csproj">
       <Project>{879FC82C-62A5-4EA7-A0D0-34968B2BD4EC}</Project>
       <Name>Cars.Messages</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Cars.Simulator\Cars.Simulator.csproj">
+    <ProjectReference Include="..\Cars.Simulator\Cars.Simulator.csproj">
       <Project>{c05007fd-008c-45c9-a0b0-dd39f0a20e35}</Project>
       <Name>Cars.Simulator</Name>
     </ProjectReference>
