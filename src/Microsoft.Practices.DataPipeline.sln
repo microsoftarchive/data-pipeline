@@ -43,7 +43,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cars.Simulator.ConsoleHost"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ColdStorage.ConsoleHost", "RunFromConsole\ColdStorage.ConsoleHost\ColdStorage.ConsoleHost.csproj", "{1E5949F1-8E52-4791-8FBE-CE38DBD00DC5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DispatchingProcessor.ConsoleHost", "RunFromConsole\DispatchingProcessor.ConsoleHost\DispatchingProcessor.ConsoleHost.csproj", "{2FB2E560-9981-4EEE-948A-C2D110D80345}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dispatcher.ConsoleHost", "RunFromConsole\Dispatcher.ConsoleHost\Dispatcher.ConsoleHost.csproj", "{2FB2E560-9981-4EEE-948A-C2D110D80345}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dispatcher.EventProcessorHost", "Implementation\Dispatcher\Dispatcher.EventProcessorHost\Dispatcher.EventProcessorHost.csproj", "{894282DA-019A-4878-8C35-A39714D28DC7}"
 EndProject
