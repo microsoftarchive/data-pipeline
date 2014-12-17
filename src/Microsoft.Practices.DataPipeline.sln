@@ -3,8 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{57A3014D-1112-4364-8E2B-23D980DB7D35}"
-EndProject
+
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{4958B0E7-E12B-42E3-93BB-1AC81429EE40}"
 	ProjectSection(SolutionItems) = preProject
 		..\.gitattributes = ..\.gitattributes
@@ -14,6 +13,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		Settings.StyleCop = Settings.StyleCop
 	EndProjectSection
 EndProject
+
+#Solution Folders
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{57A3014D-1112-4364-8E2B-23D980DB7D35}"
+EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CarSample", "CarSample", "{DFE236EF-5CF0-4C20-B465-46C5F262523C}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{B10740B3-91E7-4996-B12E-1654441C7C09}"
@@ -22,61 +25,26 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ColdStorageConsumer", "Cold
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DispatchingProcessorConsumer", "DispatchingProcessorConsumer", "{61A4FAE4-3363-4E5F-8393-1A4FC8F79678}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{B3657B80-640F-4D72-885E-E9F9729BAC18}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Simulator", "Simulator", "{26819FD7-96F7-496B-9043-8F7382CD8D3A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cars.Handlers", "Cars.Handlers\Cars.Handlers.csproj", "{CC768278-D680-4F43-AB00-F67861B4A438}"
+
+#Shared
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Implementation\Shared\Core\Core.csproj", "{B3657B80-640F-4D72-885E-E9F9729BAC18}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cars.Messages", "Cars.Messages\Cars.Messages.csproj", "{879FC82C-62A5-4EA7-A0D0-34968B2BD4EC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cars.Messages", "Implementation\Shared\Cars.Messages\Cars.Messages.csproj", "{879FC82C-62A5-4EA7-A0D0-34968B2BD4EC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cars.Simulator", "Cars.Simulator\Cars.Simulator.csproj", "{C05007FD-008C-45C9-A0B0-DD39F0A20E35}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests.Common", "Implementation\Shared\Tests.Common\Tests.Common.csproj", "{769C50C0-1627-4834-824A-A77B2C303F9D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cars.Simulator.ConsoleHost", "RunFromConsole\Cars.Simulator.ConsoleHost\Cars.Simulator.ConsoleHost.csproj", "{AF2D23B3-5494-46B7-A617-89E1DA8514EE}"
+
+#Simulator
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cars.Simulator", "Implementation\Simulator\Cars.Simulator\Cars.Simulator.csproj", "{C05007FD-008C-45C9-A0B0-DD39F0A20E35}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ColdStorage.EventHubHost", "ColdStorage.EventProcessorHost\ColdStorage.EventHubHost.csproj", "{6D15D1EF-A00C-4E2E-AEFB-6DA23BEA107F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cars.Simulator.Tests", "Implementation\Simulator\Cars.Simulator.Tests\Cars.Simulator.Tests.csproj", "{3101277B-B7D3-40D3-A9D8-6A1CFA68FF53}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ColdStorage.ConsoleHost", "RunFromConsole\ColdStorage.ConsoleHost\ColdStorage.ConsoleHost.csproj", "{1E5949F1-8E52-4791-8FBE-CE38DBD00DC5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cars.Simulator.WorkerRole", "Implementation\Simulator\Cars.Simulator.WorkerRole\Cars.Simulator.WorkerRole.csproj", "{909F4D0A-D7CC-4150-8E96-6EC2E0B41D7D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DispatchingProcessor", "DispatchingProcessor\DispatchingProcessor.csproj", "{894282DA-019A-4878-8C35-A39714D28DC7}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DispatchingProcessor.Tests", "Tests\DispatchingProcessor.Tests\DispatchingProcessor.Tests.csproj", "{1D95210E-9661-4D05-925E-C789F081DCB8}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ColdStorage.BlobWriter.Tests", "Tests\ColdStorage.BlobWriter.Tests\ColdStorage.BlobWriter.Tests.csproj", "{5990E15A-7239-4B4A-B59B-495C73063B4B}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DispatchingProcessor.ConsoleHost", "RunFromConsole\DispatchingProcessor.ConsoleHost\DispatchingProcessor.ConsoleHost.csproj", "{2FB2E560-9981-4EEE-948A-C2D110D80345}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cars.Simulator.Tests", "Tests\Cars.Simulator.Tests\Cars.Simulator.Tests.csproj", "{3101277B-B7D3-40D3-A9D8-6A1CFA68FF53}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cars.Handlers.Tests", "Tests\Cars.Handlers.Tests\Cars.Handlers.Tests.csproj", "{A5147D14-7F79-4CDC-A67A-282FBACC4668}"
-EndProject
-Project("{CC5FD16D-436D-48AD-A40C-5A424C6E3E79}") = "ConsumerGroupsDeployment", "Deployments\ConsumerGroupsDeployment\ConsumerGroupsDeployment.ccproj", "{C5E2E3E8-0F96-46A3-AE2C-638EA570E24C}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests.Common", "Tests\Tests.Common\Tests.Common.csproj", "{769C50C0-1627-4834-824A-A77B2C303F9D}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cars.Dispatcher.WorkerRole", "Cars.Dispatcher.WorkerRole\Cars.Dispatcher.WorkerRole.csproj", "{A8350E56-2C64-49C5-935D-B8933D5FBB73}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ColdStorage.WorkerRole", "ColdStorage.WorkerRole\ColdStorage.WorkerRole.csproj", "{8D14C4FA-546E-49F7-9656-F61D3C12271B}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cars.Simulator.WorkerRole", "Cars.Simulator.WorkerRole\Cars.Simulator.WorkerRole.csproj", "{909F4D0A-D7CC-4150-8E96-6EC2E0B41D7D}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Deployment", "Deployment", "{7D22B8B7-4728-480D-98A1-352FB8440646}"
-	ProjectSection(SolutionItems) = preProject
-		Deployments\CopyOutputToConfigFile.ps1 = Deployments\CopyOutputToConfigFile.ps1
-		Deployments\CopyOutputToServiceConfigFiles.ps1 = Deployments\CopyOutputToServiceConfigFiles.ps1
-		Deployments\CreateEventHub.ps1 = Deployments\CreateEventHub.ps1
-		Deployments\ProvisionAssets.ps1 = Deployments\ProvisionAssets.ps1
-		Deployments\ProvisionStorageAccount.ps1 = Deployments\ProvisionStorageAccount.ps1
-	EndProjectSection
-EndProject
-Project("{CC5FD16D-436D-48AD-A40C-5A424C6E3E79}") = "SimulatorDeployment", "Deployments\SimulatorDeployment\SimulatorDeployment.ccproj", "{0BFE77A7-42B7-4C7F-A4D0-B7EBE2AF7238}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cars.CsvLog", "Cars.CsvLog\Cars.CsvLog.csproj", "{CD347286-82F0-4632-8772-37D417AF67A9}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "HDInsight", "HDInsight", "{6AC798A2-F782-48E1-BC2E-F8F39F95FA4B}"
-	ProjectSection(SolutionItems) = preProject
-		HDInsight\hivequery.ps1 = HDInsight\hivequery.ps1
-		HDInsight\README.md = HDInsight\README.md
-	EndProjectSection
-EndProject
+
+#Running from console projects
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "RunFromConsole", "RunFromConsole", "{3A172F59-506A-4FC6-97ED-D9665E80D7B4}"
 	ProjectSection(SolutionItems) = preProject
 		RunFromConsole\mysettings-template.config = RunFromConsole\mysettings-template.config
@@ -84,8 +52,59 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "RunFromConsole", "RunFromCo
 		RunFromConsole\README.md = RunFromConsole\README.md
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Simulator", "Simulator", "{26819FD7-96F7-496B-9043-8F7382CD8D3A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cars.Simulator.ConsoleHost", "RunFromConsole\Cars.Simulator.ConsoleHost\Cars.Simulator.ConsoleHost.csproj", "{AF2D23B3-5494-46B7-A617-89E1DA8514EE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ColdStorage.ConsoleHost", "RunFromConsole\ColdStorage.ConsoleHost\ColdStorage.ConsoleHost.csproj", "{1E5949F1-8E52-4791-8FBE-CE38DBD00DC5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DispatchingProcessor.ConsoleHost", "RunFromConsole\DispatchingProcessor.ConsoleHost\DispatchingProcessor.ConsoleHost.csproj", "{2FB2E560-9981-4EEE-948A-C2D110D80345}"
+EndProject
+
+#Dispatcher
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DispatchingProcessor", "Implementation\Dispatcher\Dispatcher.EventProcessorHost\DispatchingProcessor.csproj", "{894282DA-019A-4878-8C35-A39714D28DC7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DispatchingProcessor.Tests", "Implementation\Dispatcher\Dispatcher.Tests\DispatchingProcessor.Tests.csproj", "{1D95210E-9661-4D05-925E-C789F081DCB8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cars.Handlers", "Implementation\Dispatcher\Cars.Handlers\Cars.Handlers.csproj", "{CC768278-D680-4F43-AB00-F67861B4A438}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cars.Handlers.Tests", "Implementation\Dispatcher\Cars.Handlers.Tests\Cars.Handlers.Tests.csproj", "{A5147D14-7F79-4CDC-A67A-282FBACC4668}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cars.Dispatcher.WorkerRole", "Implementation\Dispatcher\Cars.Dispatcher.WorkerRole\Cars.Dispatcher.WorkerRole.csproj", "{A8350E56-2C64-49C5-935D-B8933D5FBB73}"
+EndProject
+
+#Cold Storage
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ColdStorage.EventHubHost", "Implementation\ColdStorage\ColdStorage.EventProcessorHost\ColdStorage.EventHubHost.csproj", "{6D15D1EF-A00C-4E2E-AEFB-6DA23BEA107F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ColdStorage.BlobWriter.Tests", "Implementation\ColdStorage\ColdStorage.BlobWriter.Tests\ColdStorage.BlobWriter.Tests.csproj", "{5990E15A-7239-4B4A-B59B-495C73063B4B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ColdStorage.WorkerRole", "Implementation\ColdStorage\ColdStorage.WorkerRole\ColdStorage.WorkerRole.csproj", "{8D14C4FA-546E-49F7-9656-F61D3C12271B}"
+EndProject
+
+#Deployment
+Project("{CC5FD16D-436D-48AD-A40C-5A424C6E3E79}") = "ConsumerGroupsDeployment", "DeployToCloud\ConsumerGroupsDeployment\ConsumerGroupsDeployment.ccproj", "{C5E2E3E8-0F96-46A3-AE2C-638EA570E24C}"
+EndProject
+Project("{CC5FD16D-436D-48AD-A40C-5A424C6E3E79}") = "SimulatorDeployment", "DeployToCloud\SimulatorDeployment\SimulatorDeployment.ccproj", "{0BFE77A7-42B7-4C7F-A4D0-B7EBE2AF7238}"
+EndProject
+
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Provisioing", "Provisioing", "{7D22B8B7-4728-480D-98A1-352FB8440646}"
+	ProjectSection(SolutionItems) = preProject
+		Provisioing\CopyOutputToConfigFile.ps1 = Provisioing\CopyOutputToConfigFile.ps1
+		Provisioing\CopyOutputToServiceConfigFiles.ps1 = Provisioing\CopyOutputToServiceConfigFiles.ps1
+		Provisioing\CreateEventHub.ps1 = Provisioing\CreateEventHub.ps1
+		Provisioing\ProvisionAssets.ps1 = Provisioing\ProvisionAssets.ps1
+		Provisioing\ProvisionStorageAccount.ps1 = Provisioing\ProvisionStorageAccount.ps1
+	EndProjectSection
+EndProject
+
+# Validation
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cars.CsvLog", "Validation\Cars.CsvLog\Cars.CsvLog.csproj", "{CD347286-82F0-4632-8772-37D417AF67A9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "HDInsight", "HDInsight", "{6AC798A2-F782-48E1-BC2E-F8F39F95FA4B}"
+	ProjectSection(SolutionItems) = preProject
+		HDInsight\hivequery.ps1 = Validation\HDInsight\hivequery.ps1
+		HDInsight\README.md = Validation\HDInsight\README.md
+	EndProjectSection
+EndProject
+
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
