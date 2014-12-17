@@ -47,7 +47,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DispatchingProcessor.Consol
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dispatcher.EventProcessorHost", "Implementation\Dispatcher\Dispatcher.EventProcessorHost\Dispatcher.EventProcessorHost.csproj", "{894282DA-019A-4878-8C35-A39714D28DC7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DispatchingProcessor.Tests", "Implementation\Dispatcher\Dispatcher.Tests\DispatchingProcessor.Tests.csproj", "{1D95210E-9661-4D05-925E-C789F081DCB8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dispatcher.Tests", "Implementation\Dispatcher\Dispatcher.Tests\Dispatcher.Tests.csproj", "{1D95210E-9661-4D05-925E-C789F081DCB8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cars.Handlers", "Implementation\Dispatcher\Cars.Handlers\Cars.Handlers.csproj", "{CC768278-D680-4F43-AB00-F67861B4A438}"
 EndProject

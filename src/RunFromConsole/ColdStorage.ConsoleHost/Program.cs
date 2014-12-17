@@ -1,4 +1,4 @@
-﻿namespace ColdStorage.Tests.ConsoleHost
+﻿namespace Microsoft.Practices.DataPipeline.ColdStorage.ConsoleHost
 {
     using System;
     using System.Collections.Generic;
@@ -8,7 +8,6 @@
     using Microsoft.Practices.DataPipeline.ColdStorage;
     using Microsoft.Practices.DataPipeline.ColdStorage.Instrumentation;
     using Microsoft.Practices.DataPipeline.Tests;
-
     using Microsoft.ServiceBus;
     using Microsoft.WindowsAzure.Storage;
 

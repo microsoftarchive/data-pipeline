@@ -1,4 +1,4 @@
-namespace Microsoft.Practices.DataPipeline.Processor
+namespace Microsoft.Practices.DataPipeline.Dispatcher
 {
     // This class exists simply to capture and consolidate
     // the context that a given event is being processed in.

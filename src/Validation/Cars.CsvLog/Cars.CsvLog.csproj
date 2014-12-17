@@ -7,8 +7,8 @@
     <ProjectGuid>{CD347286-82F0-4632-8772-37D417AF67A9}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Cars.CsvLog</RootNamespace>
-    <AssemblyName>DumpToCsv</AssemblyName>
+    <RootNamespace>Microsoft.Practices.DataPipeline.Cars.CsvLog</RootNamespace>
+    <AssemblyName>Microsoft.Practices.DataPipeline.Cars.CsvLog</AssemblyName>
     <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>

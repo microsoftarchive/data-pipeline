@@ -7,7 +7,7 @@
     <ProjectGuid>{CC768278-D680-4F43-AB00-F67861B4A438}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Microsoft.Practices.DataPipeline.Cars.Handlers</RootNamespace>
+    <RootNamespace>Microsoft.Practices.DataPipeline.Cars</RootNamespace>
     <AssemblyName>Microsoft.Practices.DataPipeline.Cars.Handlers</AssemblyName>
     <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <RoleType>Worker</RoleType>

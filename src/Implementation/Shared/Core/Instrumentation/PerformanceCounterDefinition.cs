@@ -4,10 +4,10 @@
 
     public class PerformanceCounterDefinition
     {
-        private string _categoryName;
-        private string _counterName;
-        private string _counterHelp;
-        private PerformanceCounterType _counterType;
+        private readonly string _categoryName;
+        private readonly string _counterName;
+        private readonly string _counterHelp;
+        private readonly PerformanceCounterType _counterType;
 
         internal PerformanceCounterDefinition(string categoryName, string counterName, string counterHelp, PerformanceCounterType counterType)
         {

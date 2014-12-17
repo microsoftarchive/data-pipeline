@@ -1,4 +1,4 @@
-﻿namespace Microsoft.Practices.DataPipeline.Processor.Instrumentation
+﻿namespace Microsoft.Practices.DataPipeline.Dispatcher.Instrumentation
 {
     public interface IDispatcherInstrumentationPublisher
     {

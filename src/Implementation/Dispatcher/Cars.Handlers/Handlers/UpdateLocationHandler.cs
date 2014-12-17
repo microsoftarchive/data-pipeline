@@ -4,8 +4,8 @@
     using System.Collections.Generic;
     using System.Threading.Tasks;
 
+    using Microsoft.Practices.DataPipeline.Dispatcher;
     using Microsoft.Practices.DataPipeline.Logging;
-    using Microsoft.Practices.DataPipeline.Processor;
 
     [MessageHandler(MessageType = "UpdateLocationMessage", Version = 1)]
     public class UpdateLocationHandler : IMessageHandler

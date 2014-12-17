@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Microsoft.Practices.DataPipeline.Processor
+namespace Microsoft.Practices.DataPipeline.Dispatcher
 {
     using System.Collections.Generic;
     using System.Threading.Tasks;

@@ -1,4 +1,4 @@
-namespace Microsoft.Practices.DataPipeline.Cars.Simulator
+namespace Microsoft.Practices.DataPipeline.Cars.Dispatcher.Simulator
 {
     using System;
 

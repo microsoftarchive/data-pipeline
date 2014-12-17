@@ -8,8 +8,8 @@
     <ProjectGuid>{909F4D0A-D7CC-4150-8E96-6EC2E0B41D7D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Microsoft.Practices.DataPipeline.Cars.Simulator.Host</RootNamespace>
-    <AssemblyName>Microsoft.Practices.DataPipeline.Cars.Simulator.Host</AssemblyName>
+    <RootNamespace>Microsoft.Practices.DataPipeline.Cars.Simulator</RootNamespace>
+    <AssemblyName>Microsoft.Practices.DataPipeline.Cars.Simulator.WorkerRole</AssemblyName>
     <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <RoleType>Worker</RoleType>

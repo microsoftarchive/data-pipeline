@@ -1,11 +1,11 @@
-﻿namespace Microsoft.Practices.DataPipeline.Processor
+﻿namespace Microsoft.Practices.DataPipeline.Dispatcher
 {
     using System;
     using System.Collections.Generic;
     using System.Threading.Tasks;
 
+    using Microsoft.Practices.DataPipeline.Dispatcher.Instrumentation;
     using Microsoft.Practices.DataPipeline.Logging;
-    using Microsoft.Practices.DataPipeline.Processor.Instrumentation;
     using Microsoft.ServiceBus;
     using Microsoft.ServiceBus.Messaging;
 

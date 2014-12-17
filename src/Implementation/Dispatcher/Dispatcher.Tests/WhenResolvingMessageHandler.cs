@@ -1,10 +1,10 @@
-﻿namespace Microsoft.Practices.DataPipeline.Processor.Tests
+﻿namespace Microsoft.Practices.DataPipeline.Dispatcher.Tests
 {
     using System;
     using System.Collections.Generic;
     using System.Threading.Tasks;
 
-    using Microsoft.Practices.DataPipeline.Cars.Messages;
+    using Microsoft.Practices.DataPipeline.Dispatcher;
 
     using Xunit;
 

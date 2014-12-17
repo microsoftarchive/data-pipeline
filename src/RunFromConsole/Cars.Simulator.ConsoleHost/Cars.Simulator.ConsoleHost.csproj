@@ -7,8 +7,8 @@
     <ProjectGuid>{AF2D23B3-5494-46B7-A617-89E1DA8514EE}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Cars.Simulator.ConsoleHost</RootNamespace>
-    <AssemblyName>Cars.Simulator.ConsoleHost</AssemblyName>
+    <RootNamespace>Microsoft.Practices.DataPipeline.Cars.Simulator.ConsoleHost</RootNamespace>
+    <AssemblyName>Microsoft.Practices.DataPipeline.Cars.Simulator.ConsoleHost</AssemblyName>
     <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>

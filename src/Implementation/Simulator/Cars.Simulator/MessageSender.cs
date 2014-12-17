@@ -1,12 +1,14 @@
-﻿namespace Microsoft.Practices.DataPipeline.Cars.Simulator
+﻿namespace Microsoft.Practices.DataPipeline.Cars.Dispatcher.Simulator
 {
     using System;
     using System.Diagnostics;
     using System.Threading.Tasks;
 
-    using Messages;
     using Instrumentation;
     using Logging;
+
+    using Microsoft.Practices.DataPipeline.Cars.Messages;
+
     using ServiceBus.Messaging;
 
     public class MessageSender : IMessageSender

@@ -1,10 +1,12 @@
-﻿namespace Microsoft.Practices.DataPipeline.Processor.Tests
+﻿namespace Microsoft.Practices.DataPipeline.Dispatcher.Tests
 {
     using System;
     using System.Diagnostics;
     using System.Linq;
     using System.Threading.Tasks;
-    using Microsoft.Practices.DataPipeline.Processor.Instrumentation;
+
+    using Microsoft.Practices.DataPipeline.Dispatcher;
+    using Microsoft.Practices.DataPipeline.Dispatcher.Instrumentation;
     using Microsoft.Practices.DataPipeline.Tests.Mocks;
     using Microsoft.ServiceBus.Messaging;
     using Moq;

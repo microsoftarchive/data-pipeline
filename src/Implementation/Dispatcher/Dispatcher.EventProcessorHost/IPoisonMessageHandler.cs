@@ -1,4 +1,4 @@
-namespace Microsoft.Practices.DataPipeline.Processor
+namespace Microsoft.Practices.DataPipeline.Dispatcher
 {
     using System;
     using System.Collections.Generic;

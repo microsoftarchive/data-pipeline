@@ -1,13 +1,14 @@
-namespace Microsoft.Practices.DataPipeline.Cars.Simulator.Host
+namespace Microsoft.Practices.DataPipeline.Cars.Simulator
 {
     using System;
     using System.Diagnostics;
     using System.Net;
     using System.Threading;
 
-    using Instrumentation;
-    using Logging;
-    using WindowsAzure.ServiceRuntime;
+    using Microsoft.Practices.DataPipeline.Cars.Dispatcher.Simulator;
+    using Microsoft.Practices.DataPipeline.Cars.Dispatcher.Simulator.Instrumentation;
+    using Microsoft.Practices.DataPipeline.Logging;
+    using Microsoft.WindowsAzure.ServiceRuntime;
 
     public class WorkerRole : RoleEntryPoint
     {

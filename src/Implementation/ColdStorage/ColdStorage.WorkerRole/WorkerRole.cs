@@ -1,11 +1,10 @@
-namespace ColdStorage.WorkerHost
+namespace Microsoft.Practices.DataPipeline.ColdStorage
 {
     using System;
     using System.Diagnostics;
     using System.Net;
     using System.Threading;
 
-    using Microsoft.Practices.DataPipeline.ColdStorage;
     using Microsoft.Practices.DataPipeline.ColdStorage.Instrumentation;
     using Microsoft.Practices.DataPipeline.Logging;
     using Microsoft.WindowsAzure.ServiceRuntime;

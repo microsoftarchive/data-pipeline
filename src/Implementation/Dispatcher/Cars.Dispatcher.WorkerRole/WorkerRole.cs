@@ -1,15 +1,16 @@
-namespace Cars.WorkerHost
+namespace Microsoft.Practices.DataPipeline.Cars.Dispatcher
 {
     using System;
     using System.Net;
     using System.Threading;
+
+    using Microsoft.Practices.DataPipeline.Cars.Handlers;
     using Microsoft.WindowsAzure.ServiceRuntime;
 
     using Microsoft.Practices.DataPipeline;
-    using Microsoft.Practices.DataPipeline.Cars.Handlers;
     using Microsoft.Practices.DataPipeline.Logging;
-    using Microsoft.Practices.DataPipeline.Processor;
-    using Microsoft.Practices.DataPipeline.Processor.Instrumentation;
+    using Microsoft.Practices.DataPipeline.Dispatcher;
+    using Microsoft.Practices.DataPipeline.Dispatcher.Instrumentation;
 
     public class WorkerRole : RoleEntryPoint
     {

@@ -1,7 +1,6 @@
 ﻿namespace Microsoft.Practices.DataPipeline.ColdStorage
 {
     using Microsoft.Practices.DataPipeline.ColdStorage.BlobWriter;
-    using Microsoft.Practices.DataPipeline.ColdStorage.Common;
     using Microsoft.ServiceBus.Messaging;
 
     public class BufferedFrameData : BlockData

@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.Http.Dependencies;
-using Microsoft.Practices.DataPipeline.Processor;
-using Microsoft.Practices.DataPipeline.Processor.Tests;
+using Microsoft.Practices.DataPipeline.Dispatcher;
+using Microsoft.Practices.DataPipeline.Dispatcher.Tests;
 
-namespace Microsoft.Practices.DataPipeline.Processor.Tests
+namespace Microsoft.Practices.DataPipeline.Dispatcher.Tests
 {
     class MockDependencyResolver : IDependencyResolver
     {

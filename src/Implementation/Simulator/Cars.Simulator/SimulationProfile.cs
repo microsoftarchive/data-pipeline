@@ -1,4 +1,4 @@
-﻿namespace Microsoft.Practices.DataPipeline.Cars.Simulator
+﻿namespace Microsoft.Practices.DataPipeline.Cars.Dispatcher.Simulator
 {
     using System;
     using System.Collections.Generic;
@@ -8,7 +8,7 @@
     using System.Threading;
     using System.Threading.Tasks;
 
-    using Microsoft.Practices.DataPipeline.Cars.Simulator.Instrumentation;
+    using Microsoft.Practices.DataPipeline.Cars.Dispatcher.Simulator.Instrumentation;
     using Microsoft.Practices.DataPipeline.Logging;
 
     using Microsoft.ServiceBus.Messaging;

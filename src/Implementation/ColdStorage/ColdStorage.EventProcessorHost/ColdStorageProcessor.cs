@@ -14,7 +14,6 @@
     using Microsoft.WindowsAzure.Storage;
 
     using Microsoft.Practices.DataPipeline.ColdStorage.BlobWriter;
-    using Microsoft.Practices.DataPipeline.ColdStorage.Common;
     using Microsoft.Practices.DataPipeline.ColdStorage.Instrumentation;
     using Microsoft.Practices.DataPipeline.Logging;
 

@@ -1,6 +1,6 @@
-namespace Microsoft.Practices.DataPipeline.Processor.Tests
+namespace Microsoft.Practices.DataPipeline.Dispatcher.Tests
 {
-    using Microsoft.Practices.DataPipeline.Processor;
+    using Microsoft.Practices.DataPipeline.Dispatcher;
 
     using Xunit;
 

@@ -1,15 +1,16 @@
-﻿using System;
-using System.Collections.Concurrent;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using System.Web.Http.Dependencies;
-using Microsoft.Practices.DataPipeline;
-using Microsoft.Practices.DataPipeline.Cars.Handlers;
-using Microsoft.Practices.DataPipeline.Processor;
-using Microsoft.WindowsAzure.Storage;
-
-namespace DispatchingProcessor.ConsoleHost
+﻿namespace Microsoft.Practices.DataPipeline.Dispatcher.ConsoleHost
 {
+    using System;
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Threading.Tasks;
+    using System.Web.Http.Dependencies;
+
+    using Microsoft.Practices.DataPipeline;
+    using Microsoft.Practices.DataPipeline.Cars.Handlers;
+    using Microsoft.Practices.DataPipeline.Dispatcher;
+    using Microsoft.WindowsAzure.Storage;
+
     public sealed class ConsoleHostDependencyResolver : IDependencyResolver
     {
         public async static Task<ConsoleHostDependencyResolver> CreateAsync()

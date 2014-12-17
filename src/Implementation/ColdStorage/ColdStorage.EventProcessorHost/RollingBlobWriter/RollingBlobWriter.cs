@@ -9,7 +9,7 @@
     using System.Net;
     using System.Threading;
     using System.Threading.Tasks;
-    using Microsoft.Practices.DataPipeline.ColdStorage.Common;
+
     using Microsoft.Practices.DataPipeline.ColdStorage.Instrumentation;
     using Microsoft.Practices.DataPipeline.Logging;
     using Microsoft.WindowsAzure.Storage;

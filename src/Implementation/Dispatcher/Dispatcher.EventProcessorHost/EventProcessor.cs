@@ -1,4 +1,4 @@
-﻿namespace Microsoft.Practices.DataPipeline.Processor
+﻿namespace Microsoft.Practices.DataPipeline.Dispatcher
 {
     using System;
     using System.Collections.Generic;
@@ -7,10 +7,11 @@
     using System.Threading;
     using System.Threading.Tasks;
     using System.Threading.Tasks.Dataflow;
+
+    using Microsoft.Practices.DataPipeline.Dispatcher.Instrumentation;
     using Microsoft.Practices.DataPipeline.Logging;
     using Microsoft.ServiceBus.Messaging;
     using Microsoft.WindowsAzure.Storage;
-    using Microsoft.Practices.DataPipeline.Processor.Instrumentation;
 
     public class EventProcessor : IEventProcessor
     {

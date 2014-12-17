@@ -1,4 +1,4 @@
-﻿namespace Microsoft.Practices.DataPipeline.Cars.Simulator.Instrumentation
+﻿namespace Microsoft.Practices.DataPipeline.Cars.Dispatcher.Simulator.Instrumentation
 {
     using System.ComponentModel;
     using System.Configuration.Install;

@@ -9,9 +9,10 @@
     using System.Threading;
     using System.Threading.Tasks;
     using System.Threading.Tasks.Dataflow;
-    using Microsoft.Practices.DataPipeline.Cars.Handlers;
+
     using Microsoft.WindowsAzure.Storage;
     using Microsoft.WindowsAzure.Storage.Blob;
+
     using Newtonsoft.Json;
 
     internal class Program

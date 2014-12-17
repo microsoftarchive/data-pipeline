@@ -1,6 +1,4 @@
-﻿using Microsoft.Practices.DataPipeline.Processor.Instrumentation;
-
-namespace DispatchingProcessor.ConsoleHost
+﻿namespace Microsoft.Practices.DataPipeline.Dispatcher.ConsoleHost
 {
     using System;
     using System.Collections.Generic;
@@ -9,7 +7,8 @@ namespace DispatchingProcessor.ConsoleHost
 
     using Microsoft.Practices.DataPipeline;
     using Microsoft.Practices.DataPipeline.Cars.Handlers;
-    using Microsoft.Practices.DataPipeline.Processor;
+    using Microsoft.Practices.DataPipeline.Dispatcher;
+    using Microsoft.Practices.DataPipeline.Dispatcher.Instrumentation;
     using Microsoft.Practices.DataPipeline.Tests;
     using Microsoft.ServiceBus;
     using Microsoft.WindowsAzure.Storage;

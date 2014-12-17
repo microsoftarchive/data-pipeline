@@ -1,9 +1,9 @@
-﻿namespace Microsoft.Practices.DataPipeline.Processor
+﻿namespace Microsoft.Practices.DataPipeline.Dispatcher
 {
     using System;
 
+    using Microsoft.Practices.DataPipeline.Dispatcher.Instrumentation;
     using Microsoft.ServiceBus.Messaging;
-    using Microsoft.Practices.DataPipeline.Processor.Instrumentation;
 
     /// <summary>
     /// Factory for passing custom arguments to the event host processor

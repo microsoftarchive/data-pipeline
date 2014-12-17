@@ -1,8 +1,8 @@
-﻿namespace Microsoft.Practices.DataPipeline.Processor.Tests
+﻿namespace Microsoft.Practices.DataPipeline.Dispatcher.Tests
 {
     using System.Threading;
     using System.Threading.Tasks;
-    using Microsoft.Practices.DataPipeline.Processor;
+    using Microsoft.Practices.DataPipeline.Dispatcher;
 
     class MockCircuitBreaker : ICircuitBreaker
     {

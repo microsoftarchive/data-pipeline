@@ -2,7 +2,6 @@
 {
     using System;
     using System.Globalization;
-    using Microsoft.Practices.DataPipeline.ColdStorage.Common;
 
     public class PartitionAndDateNamingStrategy : IBlobNamingStrategy
     {

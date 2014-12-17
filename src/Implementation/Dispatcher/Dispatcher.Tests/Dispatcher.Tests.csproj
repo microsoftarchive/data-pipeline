@@ -7,8 +7,8 @@
     <ProjectGuid>{1D95210E-9661-4D05-925E-C789F081DCB8}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Microsoft.Practices.DataPipeline.Processor.Tests</RootNamespace>
-    <AssemblyName>Microsoft.Practices.DataPipeline.Processor.Tests</AssemblyName>
+    <RootNamespace>Microsoft.Practices.DataPipeline.Dispatcher.Tests</RootNamespace>
+    <AssemblyName>Microsoft.Practices.DataPipeline.Dispatcher.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <NuGetPackageImportStamp>33066765</NuGetPackageImportStamp>

@@ -1,7 +1,5 @@
 ﻿namespace Microsoft.Practices.DataPipeline.ColdStorage.BlobWriter
 {
-    using Microsoft.Practices.DataPipeline.ColdStorage.Common;
-
     public class BlockData
     {
         private byte[] _frame = null;

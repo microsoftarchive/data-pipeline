@@ -1,9 +1,9 @@
-﻿using System;
-using System.Globalization;
-using System.IO;
-
-namespace Microsoft.Practices.DataPipeline.ColdStorage.Common
+﻿namespace Microsoft.Practices.DataPipeline
 {
+    using System;
+    using System.Globalization;
+    using System.IO;
+
     /// <summary>
     /// A static helper class that includes various parameter checking routines.
     /// </summary>

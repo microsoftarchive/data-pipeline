@@ -1,4 +1,4 @@
-﻿namespace Microsoft.Practices.DataPipeline.Cars.Handlers
+﻿namespace Microsoft.Practices.DataPipeline.Cars
 {
     using System;
 

@@ -7,8 +7,8 @@
     <ProjectGuid>{A5147D14-7F79-4CDC-A67A-282FBACC4668}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Cars.Handlers.Tests</RootNamespace>
-    <AssemblyName>Cars.Handlers.Tests</AssemblyName>
+    <RootNamespace>Microsoft.Practices.DataPipeline.Cars.Handlers.Tests</RootNamespace>
+    <AssemblyName>Microsoft.Practices.DataPipeline.Cars.Handlers.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>

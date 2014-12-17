@@ -5,7 +5,6 @@
     using Microsoft.ServiceBus.Messaging;
 
     using Microsoft.Practices.DataPipeline.ColdStorage.BlobWriter;
-    using Microsoft.Practices.DataPipeline.ColdStorage.Common;
     using Microsoft.Practices.DataPipeline.Logging;
     using Microsoft.Practices.DataPipeline.ColdStorage.Instrumentation;
 

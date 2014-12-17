@@ -1,8 +1,8 @@
-﻿namespace Cars.Simulator.Tests
+﻿namespace Microsoft.Practices.DataPipeline.Cars.Simulator.Tests
 {
     using System;
 
-    using Microsoft.Practices.DataPipeline.Cars.Simulator;
+    using Microsoft.Practices.DataPipeline.Cars.Dispatcher.Simulator;
 
     using Xunit;
 

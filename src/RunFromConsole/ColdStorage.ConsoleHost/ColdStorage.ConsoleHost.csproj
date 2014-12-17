@@ -7,8 +7,8 @@
     <ProjectGuid>{1E5949F1-8E52-4791-8FBE-CE38DBD00DC5}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ColdStorage.Tests.ConsoleHost</RootNamespace>
-    <AssemblyName>ColdStorage.Tests.ConsoleHost</AssemblyName>
+    <RootNamespace>Microsoft.Practices.DataPipeline.ColdStorage.ConsoleHost</RootNamespace>
+    <AssemblyName>Microsoft.Practices.DataPipeline.ColdStorage.ConsoleHost</AssemblyName>
     <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>

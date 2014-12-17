@@ -1,4 +1,4 @@
-﻿namespace Microsoft.Practices.DataPipeline.Processor.Instrumentation
+﻿namespace Microsoft.Practices.DataPipeline.Dispatcher.Instrumentation
 {
     using System.ComponentModel;
     using System.Configuration.Install;

@@ -6,6 +6,7 @@
     using System.Text;
     using System.Threading;
     using System.Threading.Tasks;
+
     using Microsoft.Practices.DataPipeline.Cars.Messages;
     using Microsoft.Practices.DataPipeline.ColdStorage.Instrumentation;
     using Microsoft.Practices.DataPipeline.Logging;

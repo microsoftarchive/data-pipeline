@@ -1,17 +1,16 @@
-﻿using System.Collections.Concurrent;
-using Microsoft.Practices.DataPipeline;
-using Microsoft.Practices.DataPipeline.Cars.Handlers;
-using Microsoft.Practices.DataPipeline.Processor;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web.Http.Dependencies;
-using Microsoft.WindowsAzure.Storage;
-
-namespace Cars.WorkerHost
+﻿namespace Microsoft.Practices.DataPipeline.Cars.Dispatcher
 {
+    using System;
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Threading.Tasks;
+    using System.Web.Http.Dependencies;
+
+    using Microsoft.Practices.DataPipeline;
+    using Microsoft.Practices.DataPipeline.Cars.Handlers;
+    using Microsoft.Practices.DataPipeline.Dispatcher;
+    using Microsoft.WindowsAzure.Storage;
+
     public sealed class CarWorkerHostDependencyResolver : IDependencyResolver
     {
         public async static Task<CarWorkerHostDependencyResolver> CreateAsync()
