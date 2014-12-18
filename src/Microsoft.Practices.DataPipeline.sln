@@ -67,11 +67,11 @@ Project("{CC5FD16D-436D-48AD-A40C-5A424C6E3E79}") = "SimulatorDeployment", "Depl
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Provisioning", "Provisioning", "{7D22B8B7-4728-480D-98A1-352FB8440646}"
 	ProjectSection(SolutionItems) = preProject
-		Provisioing\CopyOutputToConfigFile.ps1 = Provisioing\CopyOutputToConfigFile.ps1
-		Provisioing\CopyOutputToServiceConfigFiles.ps1 = Provisioing\CopyOutputToServiceConfigFiles.ps1
-		Provisioing\CreateEventHub.ps1 = Provisioing\CreateEventHub.ps1
-		Provisioing\ProvisionAssets.ps1 = Provisioing\ProvisionAssets.ps1
-		Provisioing\ProvisionStorageAccount.ps1 = Provisioing\ProvisionStorageAccount.ps1
+		Provisioning\CopyOutputToConfigFile.ps1 = Provisioning\CopyOutputToConfigFile.ps1
+		Provisioning\CopyOutputToServiceConfigFiles.ps1 = Provisioning\CopyOutputToServiceConfigFiles.ps1
+		Provisioning\CreateEventHub.ps1 = Provisioning\CreateEventHub.ps1
+		Provisioning\ProvisionAssets.ps1 = Provisioning\ProvisionAssets.ps1
+		Provisioning\ProvisionStorageAccount.ps1 = Provisioning\ProvisionStorageAccount.ps1
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cars.CsvLog", "Validation\Cars.CsvLog\Cars.CsvLog.csproj", "{CD347286-82F0-4632-8772-37D417AF67A9}"
