@@ -7,8 +7,8 @@
     <ProjectGuid>{AF2D23B3-5494-46B7-A617-89E1DA8514EE}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Cars.Simulator.ConsoleHost</RootNamespace>
-    <AssemblyName>Cars.Simulator.ConsoleHost</AssemblyName>
+    <RootNamespace>Microsoft.Practices.DataPipeline.Cars.Simulator.ConsoleHost</RootNamespace>
+    <AssemblyName>Microsoft.Practices.DataPipeline.Cars.Simulator.ConsoleHost</AssemblyName>
     <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -75,15 +75,15 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Cars.Simulator\Cars.Simulator.csproj">
+    <ProjectReference Include="..\..\Implementation\Simulator\Cars.Simulator\Cars.Simulator.csproj">
       <Project>{c05007fd-008c-45c9-a0b0-dd39f0a20e35}</Project>
       <Name>Cars.Simulator</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Core\Core.csproj">
+    <ProjectReference Include="..\..\Implementation\Shared\Core\Core.csproj">
       <Project>{b3657b80-640f-4d72-885e-e9f9729bac18}</Project>
       <Name>Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Tests\Tests.Common\Tests.Common.csproj">
+    <ProjectReference Include="..\..\Implementation\Shared\Tests.Common\Tests.Common.csproj">
       <Project>{769c50c0-1627-4834-824a-a77b2c303f9d}</Project>
       <Name>Tests.Common</Name>
     </ProjectReference>

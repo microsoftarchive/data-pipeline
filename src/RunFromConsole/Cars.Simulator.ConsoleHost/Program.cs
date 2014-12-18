@@ -1,11 +1,12 @@
-﻿namespace Cars.Simulator.ConsoleHost
+﻿namespace Microsoft.Practices.DataPipeline.Cars.Simulator.ConsoleHost
 {
     using System;
     using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
-    using Microsoft.Practices.DataPipeline.Cars.Simulator;
-    using Microsoft.Practices.DataPipeline.Cars.Simulator.Instrumentation;
+
+    using Microsoft.Practices.DataPipeline.Cars.Dispatcher.Simulator;
+    using Microsoft.Practices.DataPipeline.Cars.Dispatcher.Simulator.Instrumentation;
     using Microsoft.Practices.DataPipeline.Tests;
 
     internal class Program
