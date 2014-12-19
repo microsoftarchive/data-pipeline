@@ -17,7 +17,7 @@
         public WhenProcessingMessages()
         {
             var handler = new MockPoisonMessageHandler();
-            var mockResolver = new MockDependencyResolver(handler);
+            var mockResolver = MockDependencyResolver.CreateFor(handler);
             DependencyResolverFactory.Register(mockResolver);
         }
 
