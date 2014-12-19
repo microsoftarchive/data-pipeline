@@ -93,12 +93,11 @@
             }
 
             var eventHubId = ConfigurationHelper.GetEventHubName(ns.Address, eventHubName);
-          
 
             // Use a custom event processor factory to pass parameters to the 
             // event host processor
             var factory = new EventProcessorFactory(
-                handlerResolver:    new MessageHandlerResolver(typesToSearch),
+                handlerResolver:    new MessageHandlerResolver(typesToSearch, DependencyResolverFactory.GetResolver()),
                 maxConcurrency:     maxConcurrencyPerProcessor,
                 circuitBreakerFactory: circuitBreakerFactory,
                 eventHubName:       eventHubId,
