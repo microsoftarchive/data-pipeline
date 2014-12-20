@@ -108,7 +108,6 @@
                         key);
 
                     // Add to the set of handlers
-                    // [TODO] what if several handlers for the same message?
                     handlers.Add(key, handler);
                 }
             }
