@@ -38,8 +38,6 @@
         public void Decrement()
         {
             var currentCount = Interlocked.Decrement(ref _currentLevel);
-
-            // TODO consider checking currentCount to stop the circuit breaker before the timeout
         }
 
         public async Task CheckBreak(CancellationToken cancellationToken)
