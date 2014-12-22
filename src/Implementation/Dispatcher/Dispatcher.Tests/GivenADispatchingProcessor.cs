@@ -13,35 +13,46 @@
     using Moq;
     using Xunit;
 
-    public class GivenADispatchingProcessor
+    public class GivenADispatchingProcessor : IDisposable
     {
         private const string EventHubName = "eventhubName";
         private const string PartitionId = "0";
         private const int MaxConcurrency = 1;
 
+        private readonly AppDomain testDomain;
+
+        public GivenADispatchingProcessor()
+        {
+            var name = "test-domain" + Guid.NewGuid().ToString();
+            testDomain = AppDomain.CreateDomain(name, AppDomain.CurrentDomain.Evidence, AppDomain.CurrentDomain.SetupInformation);
+        }
+
         [Fact]
         [Trait("Kind", "Unit")]
         [Trait("Running time", "Short")]
-        public async Task ThrowsWhenCheckpointFailsWithOtherExceptionTypes()
+        public void ThrowsWhenCheckpointFailsWithOtherExceptionTypes()
         {
-            // Arrange
-            var mockLogger = new Mock<ILogger>();
-            LoggerFactory.Register(Mock.Of<ILogFactory>(f => f.Create(It.IsAny<string>()) == mockLogger.Object));
-            var mockCircuitBreaker = new MockCircuitBreaker();
-            var mockResolver = new MockMessageHandlerResolver();
-
-            var processor = new EventProcessor(mockResolver, mockCircuitBreaker, MaxConcurrency, EventHubName, Mock.Of<IDispatcherInstrumentationPublisher>());
-            Func<Task> faultedCheckpoint = () =>
+            testDomain.DoCallBack(() =>
             {
-                throw new InvalidOperationException();
-            };
+                // Arrange
+                var mockLogger = new Mock<ILogger>();
+                LoggerFactory.Register(Mock.Of<ILogFactory>(f => f.Create(It.IsAny<string>()) == mockLogger.Object));
+                var mockCircuitBreaker = new MockCircuitBreaker();
+                var mockResolver = new MockMessageHandlerResolver();
 
-            var context = MockPartitionContext.Create(PartitionId, faultedCheckpoint);
-            var events = new[] { new EventData() };
+                var processor = new EventProcessor(mockResolver, mockCircuitBreaker, MaxConcurrency, EventHubName, Mock.Of<IDispatcherInstrumentationPublisher>());
+                Func<Task> faultedCheckpoint = () =>
+                {
+                    throw new InvalidOperationException();
+                };
 
-            // Act & Assert
-            await AssertExt.ThrowsAsync<InvalidOperationException>(() => processor.ProcessEventsAsync(context, events));
-            mockLogger.Verify(l => l.Warning(It.IsAny<Exception>(), It.IsAny<string>(), It.IsAny<object[]>()), Times.Never);
+                var context = MockPartitionContext.Create(PartitionId, faultedCheckpoint);
+                var events = new[] { new EventData() };
+
+                // Act & Assert
+                AssertExt.ThrowsAsync<InvalidOperationException>(() => processor.ProcessEventsAsync(context, events)).Wait();
+                mockLogger.Verify(l => l.Warning(It.IsAny<Exception>(), It.IsAny<string>(), It.IsAny<object[]>()), Times.Never);
+            });
         }
 
         [Fact]
@@ -49,23 +60,63 @@
         [Trait("Running time", "Short")]
         public void DoesNotThrowWhenCheckpointFailsWithStorageExceptionTypes()
         {
-            // Arrange
-            var mockLogger = new Mock<ILogger>();
-            LoggerFactory.Register(Mock.Of<ILogFactory>(f => f.Create(It.IsAny<string>()) == mockLogger.Object));
-            var mockCircuitBreaker = new MockCircuitBreaker();
-            var mockResolver = new MockMessageHandlerResolver();
-
-            var processor = new EventProcessor(mockResolver, mockCircuitBreaker, MaxConcurrency, EventHubName, Mock.Of<IDispatcherInstrumentationPublisher>());
-            Func<Task> faultedCheckpoint = () =>
+            testDomain.DoCallBack(() =>
             {
-                throw new StorageException();
-            };
+                // Arrange
+                var mockLogger = new Mock<ILogger>();
+                LoggerFactory.Register(Mock.Of<ILogFactory>(f => f.Create(It.IsAny<string>()) == mockLogger.Object));
+                var mockCircuitBreaker = new MockCircuitBreaker();
+                var mockResolver = new MockMessageHandlerResolver();
 
-            var context = MockPartitionContext.Create(PartitionId, faultedCheckpoint);
-            var events = new[] { new EventData() };
+                var processor = new EventProcessor(mockResolver, mockCircuitBreaker, MaxConcurrency, EventHubName, Mock.Of<IDispatcherInstrumentationPublisher>());
+                Func<Task> faultedCheckpoint = () =>
+                {
+                    throw new StorageException();
+                };
 
-            // Act & Assert
-            Assert.DoesNotThrow(async () => await processor.ProcessEventsAsync(context, events));
+                var context = MockPartitionContext.Create(PartitionId, faultedCheckpoint);
+                var events = new[] { new EventData() };
+
+                // Act & Assert
+                Assert.DoesNotThrow(() => processor.ProcessEventsAsync(context, events).Wait());
+                mockLogger.Verify(l => l.Warning(It.IsAny<Exception>(), It.IsAny<string>(), It.IsAny<object[]>()), Times.Once);
+            });
+        }
+
+        [Fact]
+        [Trait("Kind", "Unit")]
+        [Trait("Running time", "Short")]
+        public void DoesNotThrowWhenCheckpointFailsWithLeaseLostExceptionTypes()
+        {
+            testDomain.DoCallBack(() =>
+            {
+                // Arrange
+                var mockLogger = new Mock<ILogger>();
+                LoggerFactory.Register(Mock.Of<ILogFactory>(f => f.Create(It.IsAny<string>()) == mockLogger.Object));
+                var mockCircuitBreaker = new MockCircuitBreaker();
+                var mockResolver = new MockMessageHandlerResolver();
+
+                var processor = new EventProcessor(mockResolver, mockCircuitBreaker, MaxConcurrency, EventHubName, Mock.Of<IDispatcherInstrumentationPublisher>());
+                Func<Task> faultedCheckpoint = () =>
+                {
+                    throw new LeaseLostException();
+                };
+
+                var context = MockPartitionContext.Create(PartitionId, faultedCheckpoint);
+                var events = new[] { new EventData() };
+
+                // Act & Assert
+                Assert.DoesNotThrow(() => processor.ProcessEventsAsync(context, events).Wait());
+                mockLogger.Verify(l => l.Warning(It.IsAny<Exception>(), It.IsAny<string>(), It.IsAny<object[]>()), Times.Once);
+            });
+        }
+
+        public void Dispose()
+        {
+            if (testDomain != null)
+            {
+                AppDomain.Unload(testDomain);
+            }
         }
     }
 }
