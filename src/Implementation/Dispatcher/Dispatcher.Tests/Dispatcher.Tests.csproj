@@ -96,7 +96,7 @@
     <Compile Include="MockMessageHandlerResolver.cs" />
     <Compile Include="MockPoisonMessageHandler.cs" />
     <Compile Include="WhenProcessingMessages.cs" />
-    <Compile Include="WhenResolvingMessageHandler.cs" />
+    <Compile Include="GivenAMessageHandlerResolver.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="GivenACircuitBreaker.cs" />
   </ItemGroup>

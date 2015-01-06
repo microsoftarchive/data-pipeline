@@ -17,8 +17,11 @@
         public WhenProcessingMessages()
         {
             var handler = new MockPoisonMessageHandler();
-            var mockResolver = new MockDependencyResolver(handler);
+            var mockResolver = MockDependencyResolver
+                .CreateFor<IPoisonMessageHandler>(handler);
+
             DependencyResolverFactory.Register(mockResolver);
+            handler.Clear();
         }
 
         [Fact]
@@ -39,16 +42,18 @@
                     throw new Exception("This message was bad.");
                 });
 
-            var poisonHandler = DependencyResolverFactory.GetResolver().GetService(typeof(IPoisonMessageHandler))
-                as MockPoisonMessageHandler;
-            poisonHandler.Clear();
+            var poisonHandler = (MockPoisonMessageHandler)DependencyResolverFactory
+                .GetResolver()
+                .GetService(typeof(IPoisonMessageHandler));
 
             var processor = new EventProcessor(resolver, new MockCircuitBreaker(), 1, "test", Mock.Of<IDispatcherInstrumentationPublisher>());
 
             await processor.ProcessEventsAsync(context, events);
 
             Assert.True(attemptedToResolveHandler);
-            Assert.True(poisonHandler.Messages.Any(), String.Format("Expected poison handler to have messages; count = {0}",
+            Assert.True(
+                poisonHandler.Messages.Any(), 
+                String.Format("Expected poison handler to have messages; count = {0}",
                 poisonHandler.Messages.Count()));
         }
 
@@ -69,17 +74,19 @@
                     return Task.FromResult<object>(null);
                 });
 
-            var poisonHandler = DependencyResolverFactory.GetResolver().GetService(typeof(IPoisonMessageHandler))
-                 as MockPoisonMessageHandler;
-            poisonHandler.Clear();
+            var poisonHandler = (MockPoisonMessageHandler)DependencyResolverFactory
+                .GetResolver()
+                .GetService(typeof(IPoisonMessageHandler));
 
             var processor = new EventProcessor(resovler, new MockCircuitBreaker(), 1, "test", Mock.Of<IDispatcherInstrumentationPublisher>());
 
             await processor.ProcessEventsAsync(context, events);
 
             Assert.True(handled);
-            Assert.True(poisonHandler.Messages.Count() == 0, String.Format("Expected poison handler to have messages; count = {0}",
-              poisonHandler.Messages.Count()));
+            Assert.False(
+                poisonHandler.Messages.Any(), 
+                String.Format("Expected poison handler to have no messages; count = {0}",
+                poisonHandler.Messages.Count()));
         }
 
         [Fact]

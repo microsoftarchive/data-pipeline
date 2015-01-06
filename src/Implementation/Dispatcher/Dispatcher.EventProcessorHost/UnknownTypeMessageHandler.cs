@@ -4,6 +4,7 @@
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
+    using System.Web.Http.Dependencies;
 
     using Microsoft.Practices.DataPipeline.Logging;
 
@@ -14,10 +15,9 @@
 
         private readonly IPoisonMessageHandler _handler;
 
-        public UnknownTypeMessageHandler()
+        public UnknownTypeMessageHandler(IDependencyResolver resolver)
         {
-            _handler = (IPoisonMessageHandler)DependencyResolverFactory
-                .GetResolver()
+            _handler = (IPoisonMessageHandler)resolver
                 .GetService(typeof(IPoisonMessageHandler));
         }
 

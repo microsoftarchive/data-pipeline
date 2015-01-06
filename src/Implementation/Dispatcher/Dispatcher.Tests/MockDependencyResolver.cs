@@ -1,23 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web.Http.Dependencies;
-using Microsoft.Practices.DataPipeline.Dispatcher;
-using Microsoft.Practices.DataPipeline.Dispatcher.Tests;
-
-namespace Microsoft.Practices.DataPipeline.Dispatcher.Tests
+﻿namespace Microsoft.Practices.DataPipeline.Dispatcher.Tests
 {
-    class MockDependencyResolver : IDependencyResolver
-    {
-        private readonly IPoisonMessageHandler _handler;
+    using System;
+    using System.Collections.Generic;
+    using System.Web.Http.Dependencies;
 
-        public MockDependencyResolver(IPoisonMessageHandler handler)
+    internal class MockDependencyResolver : IDependencyResolver
+    {
+        private readonly Dictionary<Type,object> _registrations = new Dictionary<Type, object>();
+ 
+        private MockDependencyResolver()
         {
-            _handler = handler;
         }
-        
+
         public IDependencyScope BeginScope()
         {
             return this;
@@ -25,20 +19,36 @@ namespace Microsoft.Practices.DataPipeline.Dispatcher.Tests
 
         public object GetService(Type serviceType)
         {
-            if (serviceType == typeof (IPoisonMessageHandler))
-                return _handler;
-            else
-                return Activator.CreateInstance(serviceType);
+            return _registrations.ContainsKey(serviceType) 
+                ? _registrations[serviceType] 
+                : Activator.CreateInstance(serviceType);
         }
 
         public IEnumerable<object> GetServices(Type serviceType)
         {
-            return new Object[] { GetService(serviceType) };           
+            return new[] { GetService(serviceType) };
         }
 
         public void Dispose()
         {
-          
+        }
+
+        public MockDependencyResolver Register<T>(T service)
+        {
+            _registrations[typeof(T)] = service;
+            return this;
+        }
+
+        public static MockDependencyResolver CreateFor<T>(T service)
+        {
+            var resolver = new MockDependencyResolver();
+            resolver.Register(service);
+            return resolver;
+        }
+
+        public static MockDependencyResolver Create()
+        {
+            return new MockDependencyResolver();
         }
     }
 }

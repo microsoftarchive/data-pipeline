@@ -20,10 +20,10 @@
         private readonly IMessageHandler _defaultHandler;
         private readonly IDependencyResolver _resolver;
 
-        public MessageHandlerResolver(IEnumerable<Type> typesToSearch)
+        public MessageHandlerResolver(IEnumerable<Type> typesToSearch, IDependencyResolver resolver)
         {
             // Use the dependency resolver to create mapping types
-            _resolver = DependencyResolverFactory.GetResolver();
+            _resolver = resolver;
 
             // Initialize the dispatch table given a bounded set of 
             // types.  Message handlers are identified by implementing
@@ -31,7 +31,7 @@
             this.InitializeDispatchTable(typesToSearch);
 
             // Create a default handler for unknown types
-            _defaultHandler = new UnknownTypeMessageHandler();
+            _defaultHandler = new UnknownTypeMessageHandler(_resolver);
         }
 
         public IMessageHandler GetHandler(IDictionary<string, string> headers, string messageId)
