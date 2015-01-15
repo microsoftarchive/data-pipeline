@@ -1,16 +1,16 @@
-# Tackling Challenges with Data Pipeline Guidance
+# Tackling Challenges with Data Pipeline Guidance - Dispatcher
 
 Over the past couple of years in AzureCAT, we've had the opportunity to work on a number of challenging systems at scale, many of which have heavily leveraged messaging systems (Azure Queues, Service Bus and now Event Hubs, as well as a variety of OSS platforms such as Rabbit and ActiveMQ).  Under conditions of extreme success, we've recognized and tackled a number of challenges related to system scalability, availability (stability) and manageability, which have been codified (pun intended) in the data pipeline guidance.
 
-The sections below walk through each of the patterns and/or challenges we are tackling (or will tackle in future iterations) of the data pipeline guidance, along with some examples of the fascinating things that happen in production systems at scale.
+The sections below walk through each of the patterns and/or challenges we are tackling (or will tackle in future iterations) of the data pipeline guidance specific to building a dispatcher for processing logic associated with individual messages, along with some examples of the fascinating things that happen in production systems at scale.
 
-Big thanks to [TODO] for rightfully calling out we forgot to put this explanation in the guidance before we published it :)
+Big thanks to [@kellabyte](https://github.com/kellabyte) for rightfully calling out we forgot to put this explanation in the guidance before we published it :)
 
 ## Asynchronous batch-centric processing
 
 Messaging centric systems are inherently I/O bound (as opposed to compute intensive systems that simply happen to use some messaging for coordination), and require careful asynchronous processing and use of batching to achieve maximum *density* (that being how much work can be successfully completed over a time period for a given resource, such as a VM).
 
-Let's explore increasing levels of sophistication for implementing asynchronous processing on top of a messaging queue as a way of illustrating the journey and the choices/tradeoffs available.  For a discussion series on this journey with Azure Queues, please see [TODO] on Azure Friday.
+Let's explore increasing levels of sophistication for implementing asynchronous processing on top of a messaging queue as a way of illustrating the journey and the choices/tradeoffs available.  For a discussion series on this journey with Azure Queues, please see [Azure Friday](http://channel9.msdn.com/Shows/Azure-Friday/Azure-Queues-101-Basics-of-Queues-with-Mark-Simms).
 
 For clarity, during this section we'll start by using the basic Azure Queue APIs; these APIs do not inherently implement some of the advanced features in the Event Hub or Service Bus Topic APIs such as *prefetch* (which does a lot of the asynchronous fetching of data behind the scenes - great for running code, not great for explaining a pattern :).
 
@@ -95,7 +95,7 @@ public async Task RunAsync(CloudStorageAccount account,
 While far more efficient, this code still suffers from:
 
 - The lack of *prefetch* which minimizes wait time for processing at the expense of being *greedy* in terms of message lock (as well as the blend of message lifecycle management and processing code).
-- Messaging processing is sequential; even though we grab a batch of messages, we process them one after the other.  We'll tackle this challenge in the Concurrency Bounding [TODO] section.
+- Messaging processing is sequential; even though we grab a batch of messages, we process them one after the other.  We'll tackle this challenge in the message processing with bounded concurrency section.
 
 ### Asynchronous processing with Event Hub APIs
 
@@ -195,7 +195,7 @@ There are two "simple" ways of handling this bounded concurrency / scheduling ch
 
 The action block takes incoming messages and executes a given lambda expression with concurrency bounded by its configuration.  First, we'll create an action block that takes EventData messages an executes a handler, configured for a maximum degree of concurrency.
 
-Then we'll iterate through the list of messages and Post (TODO) each into the worker block.  Note that the worker block can fill it (it has a constrained length internal queue); if we want to handle that condition we'd either (a) set the internal queue size to be larger than the maximum possible incoming message batch, or use the _await SendAsync(msg)_ method instead.
+Then we'll iterate through the list of messages and [Post](http://msdn.microsoft.com/en-us/library/hh462696%28v=vs.110%29.aspx) each into the worker block.  Note that the worker block can fill it (it has a constrained length internal queue); if we want to handle that condition we'd either (a) set the internal queue size to be larger than the maximum possible incoming message batch, or use the _[await SendAsync(msg)](http://msdn.microsoft.com/en-us/library/hh194681(v=vs.110).aspx)_ method instead.
 
 ````C#
 public async Task ProcessEventsAsyncBoundedConcurrentPLINQ(PartitionContext context,
@@ -266,7 +266,7 @@ The implementation of the handler resolver can be approached in a number of diff
 
 The reason the data structure needs to optimize for high read contention on a small number of handler types is the typical power law distribution seen in most event processing pipelines (i.e. there is typically a small set of messages such as heartbeats or location updates that are sent continuously).  For example, the graph below shows the distribution from a customer project AzureCAT had worked on that had a very high number of _Type A_ messages being sent through the system.
 
-TODO - graph from customer
+![graph](data-pipeline-workflow-largegraph.png "Workflow Graph2")
 
 Storing this handler map in a standard .NET dictionary will create high contention and backpressure during read operations in conditions of *extreme success* (i.e. when every other part of the system is optimized).  To avoid this, store the map in a concurrency-friendly data structure such a ConcurrentDictionary, or even better an ImmutableDictionary (as the handler map will generally not be changing dynamically).  
 
@@ -310,7 +310,7 @@ In order to understand, quantify and optimize performance, monitoring, diagnosti
 - [Performance] How long do individual messages take to process, and what is their result (success, threw error, timed out)? How long does each message type or category take to process (latency), average, min, max and standard deviation (are there highly inconsistent processing times indicative of contention)?  
 - [Diagnostics] For a given incoming message, which components have touched the message, what did they do, what happened, what went wrong?
 
-All of this starts from granular logging in the dispatcher of each message's execution time, context and result (errors), along with carrying a message or activity identifier through processing.  Let's start by looking at an approach to logging execution time (this uses the CSF ILogger TODO, and we'll port this over to using SLAB in the near future, but that's a configuration change, and won't code ripple).
+All of this starts from granular logging in the dispatcher of each message's execution time, context and result (errors), along with carrying a message or activity identifier through processing.  Let's start by looking at an approach to logging execution time (this uses the [CSF ILogger](http://social.technet.microsoft.com/wiki/contents/articles/18468.telemetry-application-instrumentation.aspx), and we'll port this over to using SLAB in the near future, but that's a configuration change, and won't code ripple).
 
 ````C#
 protected async Task ProcessMessageWrapper(Guid activityId,
@@ -420,20 +420,154 @@ public async Task ExecuteAsync(
 }
 ````
 
-For more details on implementing a poison handler see the TODO section below.
+For more details on implementing a poison handler, see the related section below.
 
 ### Individual message processing throws an exception
 
 The most common error condition is that an individual message fails to process for any number of reasons (invalid code, unavailable downstream services, invalid message).  In this case we need to catch any exceptions arising from the individual message and publish those to an appropriate external store (poison message "queue") for later review.  Some issues are related to network or downstream service transients, while others expose functional bugs in your message handling logic.
 
 ````C#
+protected async Task ProcessMessageWrapper(Guid activityId,
+    byte[] content, IDictionary<string, string> properties)
+{
+    var sw = Stopwatch.StartNew();
+    Exception ex = null;
 
+    // Look up the message type handler, using the payload and 
+    // associated properties
+    var handler = _handlerResolver.GetHandler(props, msgId);
+    handlerName = handler.Name;
+
+    try
+    {               
+        await handler.ExecuteAsync(activityId, content, properties);
+    }
+    catch (Exception ex0)
+    {
+        Logger.Error(activityId, ex0, "Could not process message {0}", activityId);
+        ex = ex0;
+    }
+    finally
+    {
+        sw.Stop();
+        Logger.TraceApi(activityId, handlerName, sw.Elapsed);
+    }
+
+    // TODO; if an exception was thrown we need to handle a potentially poison
+    // message
+}
 ````
 
+As a side note, to improve efficiency the logging framework that formats the exception should by default avoid unrolling the stack frame (since you can always do detailed diagnostics from the captured "poison" message offline - see the poison message handling section below).
 
 ### Individual message processing stalls the pipeline
 
+This is a fairly complicated problem; we've colloquially referred to this as the *grocery store checkout* problem from time to time.  Given that in any bounded concurrency system throughput is directly proportional to latency, any unbounded action (checkout) will have a disproportionate impact on the overall throughput and health of the processing pipeline.
+
+In the case of an individual message taking *too long* to process (depending on the type of message, target throughput, etc) you have three choices in terms of dispatch and coordination:
+
+- Allow the stalled message to block the pipeline indefinitely.  While the simplest approach, this will leave your pipeline vulnerable to stalls triggered by individual misbehaving message handlers.  The failure mode that results from stalled handlers is *metastable*, in that the system reinforces the bad condition and prevents self-healing (for a great discussion of a complex metastable problem check out [this](https://code.facebook.com/posts/1499322996995183/solving-the-mystery-of-link-imbalance-a-metastable-failure-state-at-scale/) great post from Facebook).  Without a method to dump the misbehaving activities out of the pipeline any condition which can result in a stall (blocked downstream service, etc) will eventually, and sometimes rapidly, result in complete system lock as all available processing slots are filled with stalled handlers.
+
+- Cancel the stalled message handlers.  If your handlers are rigorously implemented and maintain cancellation checks at each pending operation or loop, this can be an effective mechanism for dumping load.  In this case, be sure to set the timeouts to at least a multiple of your expected mean to avoid false positives (and be very sure to understand your percentiles in terms of what the actual latency range is).
+
+- Let the message continue to process, but open up another slot.  This is the method we chose to demonstrate in the data pipeline guidance, with the additional check and balance that if the hard cap of slots fills up, block the entire pipeline and scream for help.
+
+Implementing the asynchronous processing logic was a bit sophisticated, making use of continuation methods and a trick for awaiting with a timeout.
+
+````C#
+// Look up the message type handler, using the payload and 
+// associated properties
+var handler = _handlerResolver.GetHandler(props, msgId);
+handlerName = handler.Name;
+
+// Create a task to track timeout
+var sw = Stopwatch.StartNew();
+var timeoutTask = Task.Delay(handler.Timeout);
+
+// Invoke the handler, using the continuation token to handle exceptions and
+// elapsed time logging.  Note: if this method throws synchronously (a misbehaving
+// handler) then we handle it in the catch statement below
+var handlerTask = handler.ExecuteAsync(context, content, props).ContinueWith(async t => 
+    await HandleCompletionAsync(t, sw, handlerName, content, props, context).ConfigureAwait(false));
+
+// Wait for either the timeout task or the handler to complete
+await Task.WhenAny(handlerTask, timeoutTask).ConfigureAwait(false);
+
+// If the handler timed out (handler time value is per-message type, not global)
+// then flag it for further review.  May be a problem with the handler, the timeout
+// value may be too low, etc.
+if (handlerTask.Status != TaskStatus.RanToCompletion)
+{
+	props.Add("timeoutDuration", handler.Timeout.ToString());
+	await Logger.LogHandlerTimeout(handler, context, content, props);
+}
+
+````
+
+Then we handle all of the message completion and error handling tasks in the completion method `HandleCompletionAsync`.
+
+````C#
+// If the preceding task failed with an exception, flag the exception and
+// log the message body/properties 
+if (t.IsFaulted)
+{
+	_instrumentationPublisher.TaskFaulted();
+    await HandleExceptionAsync(handlerName, context, sw.Elapsed, 
+        content, props, t.Exception).ConfigureAwait(false);
+}
+// Otherwise log the execution time (if the message is in a timeout condition, 
+// it will be logged in the primary flow as a warning)
+else
+{
+	Logger.TraceApi(handlerName, sw.Elapsed, "{0}/{1}/OK", 
+	    context.PartitionId, context.EventDataOffset);
+}
+````
+
+If we look at the set of possibilities for each message handler, and the related message processing / consistency goals:
+
+Processing Result | Action Taken |
+----------------- | ------------ |
+Success (completed on time) | Log success
+Timeout (did not complete on time) | Log timeout, publish message to "poison queue" for later review.  Message may still complete
+Error (message failed before timeout) | Log failure, publish message to "poison" queue with exception for later review.
+Error (message failed after timeout) | Log failure, publish message to "poison" queue with exception
+
+In all cases the message will either be executed or published to an external store before fetching the next batch of messages.  The data pipeline is tuned for a high volume workload wherein the number of processing failures is an exceptional case.
+
 ## Poison message handling
 
+Throughout this discussion, we've made reference to the need for some form of poision message handling to divert suspicious, erroneous or failing mesages to another system.  While many systems (such as Service Bus Topics and Queues) implement their own message handling, we took the approach of poison message handling agnostic to the actual messaging system and enriched with the failure context.
+
+Starting from the baseline `IPoisonMessageHandler` interface:
+
+````C#
+public interface IPoisonMessageHandler
+{
+	Task PublishAsync(
+		FailureMode failureMode,
+		ProcessingContext context,
+		byte[] payload,
+		IDictionary<string, string> properties,
+		Exception ex = null);
+}
+
+public enum FailureMode
+{
+	UnknownPayload,
+	Error,
+	Timeout
+}
+````
+
+The implementation in `AzureBlobPoisonMessageHandler` a blob for the source message along with related properties, and optionally a second blob containing exception details.  So long as the pipeline leverages a run-time pluggable poison handler, you can tune the implementation to the volume and depth of context for erroneous message handling suitable to your workflow.
+
+We generally recommend avoiding transient data stores (such as putting the messages into an Azure Queue which auto delete after seven days) as these records can be valuable logging and diagnostics tools.  That being said, this does create the additional overhead of periodically reviewing and potentially truncating the data set.
+
 ## State and concurrency management 
+
+TODO
+
 ## Consistency and idempotency
+
+TODO
