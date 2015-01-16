@@ -119,7 +119,7 @@ $scriptPath = Split-Path (Get-Variable MyInvocation -Scope 0).Value.MyCommand.Pa
 .\CopyOutputToConfigFile.ps1 -configurationFile "..\RunFromConsole\mysettings.config" -appSettings $settings
 
 # get Cloud service configuration files 
-$serviceConfigFiles = Get-ChildItem -Include "ServiceConfiguration.Cloud.cscfg" -Path $scriptPath -Recurse
+$serviceConfigFiles = Get-ChildItem -Include "ServiceConfiguration.Cloud.cscfg" -Path "$($scriptPath)\.." -Recurse
 .\CopyOutputToServiceConfigFiles.ps1 -serviceConfigFiles $serviceConfigFiles -appSettings $settings
 
 ""
