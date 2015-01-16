@@ -76,7 +76,18 @@ Param
 $ErrorActionPreference = "Stop"
 
 # Check the azure module is installed
-Import-Module azure
+if(-not(Get-Module -name "Azure")) 
+{ 
+    if(Get-Module -ListAvailable | Where-Object { $_.name -eq "Azure" }) 
+    { 
+        Import-Module Azure
+    }
+    else
+    {
+        "Windows Azure Powershell has not been installed."
+        Exit
+    }
+}
 
 Add-AzureAccount
 Select-AzureSubscription -SubscriptionName $SubscriptionName
