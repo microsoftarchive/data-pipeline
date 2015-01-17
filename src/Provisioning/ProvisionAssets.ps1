@@ -46,11 +46,11 @@ Param
 	[string] $SubscriptionName,
 
     [Parameter (Mandatory = $true)]
-    [ValidatePattern("^[a-z0-9]*$")] 
+    [ValidatePattern("^[A-Za-z][-A-Za-z0-9]*[A-Za-z0-9]$")] 
     [string] $ServiceBusNamespace,
 
     [Parameter (Mandatory = $true)]
-    [ValidatePattern("^[a-z0-9]*$")] 
+    [ValidatePattern("^[A-Za-z0-9]$|^[A-Za-z0-9][\w-\.\/]*[A-Za-z0-9]$")] 
     [string] $ServiceBusEventHubPath,
 
     [Parameter (Mandatory = $true)]
