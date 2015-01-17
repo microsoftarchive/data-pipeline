@@ -54,6 +54,7 @@ Param
     [string] $ServiceBusEventHubPath,
 
     [Parameter (Mandatory = $true)]
+    [ValidatePattern("^[a-z0-9]*$")]
     [String]$StorageAccountName,
 
     [Parameter (Mandatory = $true)]
