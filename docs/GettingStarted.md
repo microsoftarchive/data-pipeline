@@ -24,7 +24,7 @@ Download the source and verify that you can build it in your local development e
 
 ### 3. Provision your environment
 
-All three deployment options use an Event Hub which you must configure before you run the RI. You can configure an Event Hub manually using the Azure Management portal but we recommend you use the **ProvisionAssets.ps1** PowerShell script located in the **Deployment** folder included in the Visual Studio solution you downloaded. This script also provisions the Azure Storage account that deployment option #3 requires and modifies the configuration files in your Visual Studio solution to include details of the Event Hub and Storage account.
+All three deployment options use an Event Hub which you must configure before you run the RI. You can configure an Event Hub manually using the Azure Management portal but we recommend you use the **ProvisionAssets.ps1** PowerShell script located in the **Provisioning** folder included in the Visual Studio solution you downloaded. This script also provisions the Azure Storage account that deployment option #3 requires and modifies the configuration files in your Visual Studio solution to include details of the Event Hub and Storage account.
 
 This script prompts prompts you for the following information:
 

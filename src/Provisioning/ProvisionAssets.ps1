@@ -46,14 +46,15 @@ Param
 	[string] $SubscriptionName,
 
     [Parameter (Mandatory = $true)]
-    [ValidatePattern("^[a-z0-9]*$")] 
+    [ValidatePattern("^[A-Za-z][-A-Za-z0-9]*[A-Za-z0-9]$")] 
     [string] $ServiceBusNamespace,
 
     [Parameter (Mandatory = $true)]
-    [ValidatePattern("^[a-z0-9]*$")] 
+    [ValidatePattern("^[A-Za-z0-9]$|^[A-Za-z0-9][\w-\.\/]*[A-Za-z0-9]$")] 
     [string] $ServiceBusEventHubPath,
 
     [Parameter (Mandatory = $true)]
+    [ValidatePattern("^[a-z0-9]*$")]
     [String]$StorageAccountName,
 
     [Parameter (Mandatory = $true)]
@@ -76,7 +77,18 @@ Param
 $ErrorActionPreference = "Stop"
 
 # Check the azure module is installed
-Import-Module azure
+if(-not(Get-Module -name "Azure")) 
+{ 
+    if(Get-Module -ListAvailable | Where-Object { $_.name -eq "Azure" }) 
+    { 
+        Import-Module Azure
+    }
+    else
+    {
+        "Microsoft Azure Powershell has not been installed, or cannot be found."
+        Exit
+    }
+}
 
 Add-AzureAccount
 Select-AzureSubscription -SubscriptionName $SubscriptionName
@@ -119,7 +131,7 @@ $scriptPath = Split-Path (Get-Variable MyInvocation -Scope 0).Value.MyCommand.Pa
 .\CopyOutputToConfigFile.ps1 -configurationFile "..\RunFromConsole\mysettings.config" -appSettings $settings
 
 # get Cloud service configuration files 
-$serviceConfigFiles = Get-ChildItem -Include "ServiceConfiguration.Cloud.cscfg" -Path $scriptPath -Recurse
+$serviceConfigFiles = Get-ChildItem -Include "ServiceConfiguration.Cloud.cscfg" -Path "$($scriptPath)\.." -Recurse
 .\CopyOutputToServiceConfigFiles.ps1 -serviceConfigFiles $serviceConfigFiles -appSettings $settings
 
 ""

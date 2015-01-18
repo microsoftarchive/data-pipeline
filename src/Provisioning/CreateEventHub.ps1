@@ -56,8 +56,8 @@
 [CmdletBinding(PositionalBinding=$True)] 
 Param( 
     [Parameter(Mandatory = $true)] 
-    [ValidatePattern("^[a-z0-9]*$")] 
-    [String]$Path,                                  # required    needs to be alphanumeric     
+    [ValidatePattern("^[A-Za-z0-9]$|^[A-Za-z0-9][\w-\.\/]*[A-Za-z0-9]$")] 
+    [String]$Path,                                  # required    needs to start with letter or number, and contain only letters, numbers, periods, hyphens, and underscores.
     [Int]$PartitionCount = 16,                      # optional    default to 16 
     [Int]$MessageRetentionInDays = 7,               # optional    default to 7 
     [String]$UserMetadata = $null,                  # optional    default to $null 
@@ -65,8 +65,8 @@ Param(
     [string]$DispatcherConsumerGroupName = "Dispatcher",
     [String]$ConsumerGroupUserMetadata = $null,     # optional    default to $null 
     [Parameter(Mandatory = $true)] 
-    [ValidatePattern("^[a-z0-9]*$")] 
-    [String]$Namespace,                             # required    needs to be alphanumeric 
+    [ValidatePattern("^[A-Za-z][-A-Za-z0-9]*[A-Za-z0-9]$")] 
+    [String]$Namespace,                             # required    needs to start with letter or number, and contain only letters, numbers, and hyphens.
     [Bool]$CreateACSNamespace = $false,             # optional    default to $false 
     [String]$Location = "West Europe"          # optional    default to "West Europe" 
     ) 
