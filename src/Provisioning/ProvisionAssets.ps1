@@ -85,7 +85,7 @@ if(-not(Get-Module -name "Azure"))
     }
     else
     {
-        "Windows Azure Powershell has not been installed."
+        "Microsoft Azure Powershell has not been installed, or cannot be found."
         Exit
     }
 }
