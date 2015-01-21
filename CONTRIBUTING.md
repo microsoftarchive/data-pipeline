@@ -1,4 +1,6 @@
 # Contributing
+If you haven't already read through them, we recommend the starting with the [Azure contribution guidelines][azure-oss].
+
 We will _consider_ any contributions that align with the stated goals of the project.
 
 ## Legal
@@ -15,3 +17,5 @@ Your pull request should:
 
 ## Be nice
 We might be slower than you'd like. We might also ask you to make changes to the pull request. We ask for your patience.  :smiley:
+
+[azure-oss]: http://azure.github.io/guidelines.html#contributing
