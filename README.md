@@ -1,5 +1,5 @@
 #Data Pipeline Guidance
-Microsoft patterns & practices
+[Microsoft patterns & practices](http://aka.ms/mspnp)
 
 This reference implementation is a work-in-progress project. It is meant to demonstrate proven practices regarding the high-scale, high-volume ingestion of data in a typical event processing system.
 
