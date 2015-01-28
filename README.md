@@ -1,4 +1,6 @@
 #Data Pipeline Guidance
+
+[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/mspnp/data-pipeline?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [Microsoft patterns & practices](http://aka.ms/mspnp)
 
 This reference implementation is a work-in-progress project. It is meant to demonstrate proven practices regarding the high-scale, high-volume ingestion of data in a typical event processing system.
