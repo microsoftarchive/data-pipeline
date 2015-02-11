@@ -8,10 +8,10 @@
       <Setting name="Dispatcher.PrefetchCount" value="100" />
       <Setting name="Dispatcher.ReceiveTimeout" value="0.00:01:00" />
       <Setting name="Dispatcher.MaxConcurrencyPerProcessor" value="1" />
-      <Setting name="Dispatcher.CheckpointStorageAccount" value="DefaultEndpointsProtocol=http;AccountName=[YourStorageAccount];AccountKey=[YourAccountKey]" />
-      <Setting name="Dispatcher.EventHubConnectionString" value="Endpoint=sb://[YourServiceNamespace].servicebus.windows.net/;SharedAccessKeyName=[YourAccessKeyName];SharedAccessKey=[YourAccessKey];TransportType=Amqp" />
-      <Setting name="Dispatcher.EventHubName" value="[YourEventHubName]" />
-      <Setting name="Dispatcher.PoisonMessageStorageAccount" value="DefaultEndpointsProtocol=http;AccountName=[YourStorageAccount];AccountKey=[YourAccountKey]" />
+      <Setting name="Dispatcher.CheckpointStorageAccount" value="DefaultEndpointsProtocol=https;AccountName=larrystorageaccount;AccountKey=wXPmivjkiTeBFI4LsIFVUN8cIPg1ajnwZqA/zQbpuZoAbkNWzAOBe1MhHyUdz/xBsWKPPQsdtp9/wH/ho2JWvA==" />
+      <Setting name="Dispatcher.EventHubConnectionString" value="Endpoint=sb://larryns.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=BV28bkdsJtM6SM8823gOH2cUqfShk8P1ThHgAdh9VeI=;TransportType=Amqp" />
+      <Setting name="Dispatcher.EventHubName" value="datapipelinehub" />
+      <Setting name="Dispatcher.PoisonMessageStorageAccount" value="DefaultEndpointsProtocol=https;AccountName=larrystorageaccount;AccountKey=wXPmivjkiTeBFI4LsIFVUN8cIPg1ajnwZqA/zQbpuZoAbkNWzAOBe1MhHyUdz/xBsWKPPQsdtp9/wH/ho2JWvA==" />
       <Setting name="Dispatcher.PoisonMessageContainer" value="posion-messages" />
       <Setting name="Handler.LongRunningTaskDuration" value="0.00:01:00" />
       <Setting name="Dispatcher.CircuitBreaker.WarningLevel" value="200" />
@@ -26,13 +26,13 @@
     <Instances count="1" />
     <ConfigurationSettings>
       <Setting name="Coldstorage.ConsumerGroupName" value="ColdStorage" />
-      <Setting name="Coldstorage.CheckpointStorageAccount" value="DefaultEndpointsProtocol=http;AccountName=[YourStorageAccount];AccountKey=[YourAccountKey]" />
-      <Setting name="Coldstorage.EventHubConnectionString" value="Endpoint=sb://[YourServiceNamespace].servicebus.windows.net/;SharedAccessKeyName=[YourAccessKeyName];SharedAccessKey=[YourAccessKey];TransportType=Amqp" />
-      <Setting name="Coldstorage.EventHubName" value="[YourEventHubName]" />
+      <Setting name="Coldstorage.CheckpointStorageAccount" value="DefaultEndpointsProtocol=https;AccountName=larrystorageaccount;AccountKey=wXPmivjkiTeBFI4LsIFVUN8cIPg1ajnwZqA/zQbpuZoAbkNWzAOBe1MhHyUdz/xBsWKPPQsdtp9/wH/ho2JWvA==" />
+      <Setting name="Coldstorage.EventHubConnectionString" value="Endpoint=sb://larryns.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=BV28bkdsJtM6SM8823gOH2cUqfShk8P1ThHgAdh9VeI=;TransportType=Amqp" />
+      <Setting name="Coldstorage.EventHubName" value="datapipelinehub" />
       <Setting name="Coldstorage.MaxBatchSize" value="1000" />
       <Setting name="Coldstorage.PreFetchCount" value="10000" />
       <Setting name="Coldstorage.ReceiveTimeout" value="0.01:00:00" />
-      <Setting name="Coldstorage.BlobWriterStorageAccount" value="DefaultEndpointsProtocol=http;AccountName=[YourStorageAccount];AccountKey=[YourAccountKey]" />
+      <Setting name="Coldstorage.BlobWriterStorageAccount" value="DefaultEndpointsProtocol=https;AccountName=larrystorageaccount;AccountKey=wXPmivjkiTeBFI4LsIFVUN8cIPg1ajnwZqA/zQbpuZoAbkNWzAOBe1MhHyUdz/xBsWKPPQsdtp9/wH/ho2JWvA==" />
       <Setting name="Coldstorage.RollSizeForBlobWriterMb" value="2048" />
       <Setting name="Coldstorage.ContainerName" value="coldstorage" />
       <Setting name="Coldstorage.BlobPrefix" value="pnp-datapipeline" />
