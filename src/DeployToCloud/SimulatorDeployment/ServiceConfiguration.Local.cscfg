@@ -10,8 +10,14 @@
       <Setting name="Simulator.WarmUpDuration" value="0.00:00:30" />
       <Setting name="Simulator.EventHubConnectionString" value="Endpoint=sb://[YourServiceNamespace].servicebus.windows.net/;SharedAccessKeyName=[YourAccessKeyName];SharedAccessKey=[YourAccessKey];TransportType=Amqp" />
       <Setting name="Simulator.EventHubPath" value="[YourEventHubName]" />
+      <Setting name="Microsoft.WindowsAzure.Plugins.RemoteAccess.Enabled" value="true" />
+      <Setting name="Microsoft.WindowsAzure.Plugins.RemoteAccess.AccountUsername" value="admin" />
+      <Setting name="Microsoft.WindowsAzure.Plugins.RemoteAccess.AccountEncryptedPassword" value="MIIBnQYJKoZIhvcNAQcDoIIBjjCCAYoCAQAxggFOMIIBSgIBADAyMB4xHDAaBgNVBAMME1dpbmRvd3MgQXp1cmUgVG9vbHMCEDZcDNMCNISqQbazqQuWuvowDQYJKoZIhvcNAQEBBQAEggEAeLsfdv5xh2DJHV8XP0SwI7gJIBWNoCOb+IrysS0fzdRYVFuDvTvk4qKktPMlPJvsuXawBQpIZqBfNW2kY9caZHbWDBYy204Qt8o7WxqU2/OD8lNrf71VPoAnxg/dj7DHmQ1Bc9lxWvrLX+fmNfhrifhtdtRRjLlD3M8VF6TO0ABm/y2m/QsduaNO7EuJ/ZjcfAO4AepYuaoYEFKvVdj5Xlmewaw8FbqG4R+jhW52lzrhEllc8UAx0v9t2CLjtZYOF5hjNKgacN8SKKexuuw5JNJb+7zM+KJatqbH1pIeNHISKodTSh0hlYkkW7H0pzc1o8p0U6iX1QjpQYDb0IUoBTAzBgkqhkiG9w0BBwEwFAYIKoZIhvcNAwcECLCI2QSojPFlgBD1p+3QZKIXYrXMqVGoO3J9" />
+      <Setting name="Microsoft.WindowsAzure.Plugins.RemoteAccess.AccountExpiration" value="2016-02-11T23:59:59.0000000-08:00" />
+      <Setting name="Microsoft.WindowsAzure.Plugins.RemoteForwarder.Enabled" value="true" />
     </ConfigurationSettings>
     <Certificates>
+      <Certificate name="Microsoft.WindowsAzure.Plugins.RemoteAccess.PasswordEncryption" thumbprint="7BA3DD521269CE2319D38C5D4D74BA89530FE585" thumbprintAlgorithm="sha1" />
     </Certificates>
   </Role>
 </ServiceConfiguration>

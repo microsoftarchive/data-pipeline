@@ -24,5 +24,9 @@
     <LocalResources>
       <LocalStorage name="TelemetryArchive" cleanOnRoleRecycle="false" />
     </LocalResources>
+    <Imports>
+      <Import moduleName="RemoteAccess" />
+      <Import moduleName="RemoteForwarder" />
+    </Imports>
   </WorkerRole>
 </ServiceDefinition>

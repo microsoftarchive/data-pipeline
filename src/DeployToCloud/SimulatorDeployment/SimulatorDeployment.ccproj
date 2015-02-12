@@ -38,6 +38,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Cars.Simulator.WorkerRoleContent" />
+    <Folder Include="Profiles" />
   </ItemGroup>
   <ItemGroup>
     <DiagnosticsConfiguration Include="Cars.Simulator.WorkerRoleContent\diagnostics.wadcfgx" />
@@ -50,6 +51,9 @@
       <RoleType>Worker</RoleType>
       <RoleName>Cars.Simulator.WorkerRole</RoleName>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <PublishProfile Include="Profiles\lbsimulator-iotProduction.azurePubxml" />
   </ItemGroup>
   <!-- Import the target files for this project template -->
   <PropertyGroup>
