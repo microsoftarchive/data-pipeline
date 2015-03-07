@@ -18,3 +18,4 @@ The two primary concerns of this project are:
 * [Scenarios & Requirements](/docs/Introduction.md)
 * [Architecture Overview](/docs/ArchitectureOverview.md)
 * [Getting Started](/docs/GettingStarted.md)
+* [Contribute](CONTRIBUTING.md) :smile:
