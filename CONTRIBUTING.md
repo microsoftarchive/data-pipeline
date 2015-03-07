@@ -8,6 +8,10 @@ You will need to complete a Contributor License Agreement (CLA). Briefly, this a
 
 Please submit a [Contributor License Agreement (CLA)](https://cla.azure.com/) before submitting a pull request. This process is automated and should be painless.
 
+## Help wanted
+
+If you are looking for something to work on, we will tag some issues as [**help wanted**](https://github.com/mspnp/data-pipeline/labels/help%20wanted).
+
 ## Housekeeping
 Your pull request should:
 
