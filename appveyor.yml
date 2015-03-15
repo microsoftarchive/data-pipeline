@@ -1,0 +1,5 @@
+# http://www.appveyor.com/docs/appveyor-yml
+
+before_build:
+  - nuget restore src/Microsoft.Practices.DataPipeline.sln
+  - ps: build/appveyor.prebuild.ps1
