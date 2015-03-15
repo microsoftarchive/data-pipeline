@@ -28,7 +28,7 @@
         }
 
         [Fact]
-        [Trait("Kind", "Unit")]
+        [Trait("Category", "Unit")]
         [Trait("Running time", "Short")]
         public void ThrowsWhenCheckpointFailsWithOtherExceptionTypes()
         {
@@ -56,7 +56,7 @@
         }
 
         [Fact]
-        [Trait("Kind", "Unit")]
+        [Trait("Category", "Unit")]
         [Trait("Running time", "Short")]
         public void DoesNotThrowWhenCheckpointFailsWithStorageExceptionTypes()
         {
@@ -84,7 +84,7 @@
         }
 
         [Fact]
-        [Trait("Kind", "Unit")]
+        [Trait("Category", "Unit")]
         [Trait("Running time", "Short")]
         public void DoesNotThrowWhenCheckpointFailsWithLeaseLostExceptionTypes()
         {
