@@ -78,7 +78,7 @@
                 var events = new[] { new EventData() };
 
                 // Act & Assert
-                Assert.DoesNotThrow(() => processor.ProcessEventsAsync(context, events).Wait());
+                processor.ProcessEventsAsync(context, events).Wait();
                 mockLogger.Verify(l => l.Warning(It.IsAny<Exception>(), It.IsAny<string>(), It.IsAny<object[]>()), Times.Once);
             });
         }
@@ -106,7 +106,7 @@
                 var events = new[] { new EventData() };
 
                 // Act & Assert
-                Assert.DoesNotThrow(() => processor.ProcessEventsAsync(context, events).Wait());
+                processor.ProcessEventsAsync(context, events).Wait();
                 mockLogger.Verify(l => l.Warning(It.IsAny<Exception>(), It.IsAny<string>(), It.IsAny<object[]>()), Times.Once);
             });
         }

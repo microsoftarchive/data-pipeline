@@ -497,13 +497,13 @@
             await processor.OpenAsync(context);
 
             // Act
-            Assert.DoesNotThrow(async () => await processor.ProcessEventsAsync(context, new[] 
+            await processor.ProcessEventsAsync(context, new[] 
                 {
                     CreateEventData((byte)'a', 100),
                     CreateEventData((byte)'b', 200),
                     CreateEventData((byte)'c', 300),
                     CreateEventData((byte)'d', 400),
-                }));
+                });
         }
 
         [Fact]
