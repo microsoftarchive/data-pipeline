@@ -14,7 +14,7 @@ namespace Microsoft.Practices.DataPipeline.Cars.Handlers.Tests
     {
         [Fact]
         [Trait("Running time", "Long")]
-        [Trait("Kind", "Unit")]
+        [Trait("Category", "Unit")]
         public async Task WhenHandlingAnything_ThenDelaysTheSpecifiedDuration()
         {
             var duration = TimeSpan.FromSeconds(2);

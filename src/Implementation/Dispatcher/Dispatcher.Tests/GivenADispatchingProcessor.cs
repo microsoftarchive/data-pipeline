@@ -28,7 +28,7 @@
         }
 
         [Fact]
-        [Trait("Kind", "Unit")]
+        [Trait("Category", "Unit")]
         [Trait("Running time", "Short")]
         public void ThrowsWhenCheckpointFailsWithOtherExceptionTypes()
         {
@@ -56,7 +56,7 @@
         }
 
         [Fact]
-        [Trait("Kind", "Unit")]
+        [Trait("Category", "Unit")]
         [Trait("Running time", "Short")]
         public void DoesNotThrowWhenCheckpointFailsWithStorageExceptionTypes()
         {
@@ -78,13 +78,13 @@
                 var events = new[] { new EventData() };
 
                 // Act & Assert
-                Assert.DoesNotThrow(() => processor.ProcessEventsAsync(context, events).Wait());
+                processor.ProcessEventsAsync(context, events).Wait();
                 mockLogger.Verify(l => l.Warning(It.IsAny<Exception>(), It.IsAny<string>(), It.IsAny<object[]>()), Times.Once);
             });
         }
 
         [Fact]
-        [Trait("Kind", "Unit")]
+        [Trait("Category", "Unit")]
         [Trait("Running time", "Short")]
         public void DoesNotThrowWhenCheckpointFailsWithLeaseLostExceptionTypes()
         {
@@ -106,7 +106,7 @@
                 var events = new[] { new EventData() };
 
                 // Act & Assert
-                Assert.DoesNotThrow(() => processor.ProcessEventsAsync(context, events).Wait());
+                processor.ProcessEventsAsync(context, events).Wait();
                 mockLogger.Verify(l => l.Warning(It.IsAny<Exception>(), It.IsAny<string>(), It.IsAny<object[]>()), Times.Once);
             });
         }

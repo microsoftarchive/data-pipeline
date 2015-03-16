@@ -23,7 +23,7 @@
 
         [Fact]
         [Trait("Running time", "Short")]
-        [Trait("Kind", "Unit")]
+        [Trait("Category", "Unit")]
         public async Task WhenCachedBlocksRemainBelowTripLevel_ThenDoesNotStall()
         {
             var blocks = new List<IList<BlockData>>();
@@ -49,7 +49,7 @@
 
         [Fact]
         [Trait("Running time", "Long")]
-        [Trait("Kind", "Unit")]
+        [Trait("Category", "Unit")]
         public async Task WhenCachedBlocksHitTripLevel_ThenStallsUntilWriteOperationSucceeds()
         {
             var blocks = new List<IList<BlockData>>();

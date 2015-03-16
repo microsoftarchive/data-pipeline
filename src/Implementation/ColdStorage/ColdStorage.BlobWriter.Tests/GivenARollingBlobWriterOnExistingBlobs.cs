@@ -72,7 +72,7 @@
 
         [Fact]
         [Trait("Running time", "Long")]
-        [Trait("Kind", "Integration")]
+        [Trait("Category", "Integration")]
         public async Task WhenWritingSingleBlock_ThenBlockIsAppendedToLastBlob()
         {
             var payloadString = new string('a', 50);
@@ -93,7 +93,7 @@
 
         [Fact]
         [Trait("Running time", "Long")]
-        [Trait("Kind", "Integration")]
+        [Trait("Category", "Integration")]
         public async Task WhenWritingMultipleBlocksAndBlobIsMaxedOut_ThenRollBlocksToNewBlob()
         {
             // existing blob 0 size: 1MB
@@ -119,7 +119,7 @@
 
         [Fact]
         [Trait("Running time", "Long")]
-        [Trait("Kind", "Integration")]
+        [Trait("Category", "Integration")]
         public async Task WhenWritingSingleMaxedOutBlock_ThenRollsToANewBlob()
         {
             // existing blob 0 size: 1MB

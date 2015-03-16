@@ -43,7 +43,7 @@
 
         [Fact]
         [Trait("Running time", "Long")]
-        [Trait("Kind", "Integration")]
+        [Trait("Category", "Integration")]
         public async Task WhenWritingSingleBlock_ThenBlockIsWritten()
         {
             var payloadString = new string('a', 50);
@@ -65,7 +65,7 @@
 
         [Fact]
         [Trait("Running time", "Long")]
-        [Trait("Kind", "Integration")]
+        [Trait("Category", "Integration")]
         public async Task WhenWritingMultipleBlocks_ThenBlockAreWrittenInOrder()
         {
             var payloadStringA = new string('a', 50);
@@ -89,7 +89,7 @@
 
         [Fact]
         [Trait("Running time", "Long")]
-        [Trait("Kind", "Integration")]
+        [Trait("Category", "Integration")]
         public async Task WhenIssuingMultipleWriteRequests_ThenBlockAreWrittenInOrder()
         {
             var payloadStringA = new string('a', 50);
@@ -124,7 +124,7 @@
 
         [Fact]
         [Trait("Running time", "Long")]
-        [Trait("Kind", "Integration")]
+        [Trait("Category", "Integration")]
         public async Task WhenNewRequestGoesOverMaximumBlockLimit_TheWritesNewRequestInNewBlob()
         {
             var payloadStringA = new string('a', 50);
@@ -168,7 +168,7 @@
 
         [Fact]
         [Trait("Running time", "Long")]
-        [Trait("Kind", "Integration")]
+        [Trait("Category", "Integration")]
         public async Task WhenNewRequestGoesOverRollingSizeLimit_TheWritesNewRequestInNewBlob()
         {
             var payloadStringA = new string('a', 50);
@@ -211,7 +211,7 @@
 
         [Fact]
         [Trait("Running time", "Long")]
-        [Trait("Kind", "Integration")]
+        [Trait("Category", "Integration")]
         public async Task WhenNewRequestFindsUpdatedBlob_ThenRequestReturnsFalse()
         {
             var payloadStringA = new string('a', 50);
@@ -248,7 +248,7 @@
 
         [Fact]
         [Trait("Running time", "Long")]
-        [Trait("Kind", "Integration")]
+        [Trait("Category", "Integration")]
         public async Task WhenSendingNewRequestAfterExceptionForConcurrency_ThenWriterIsResetAndWritesResentData()
         {
             var payloadStringA = new string('a', 50);

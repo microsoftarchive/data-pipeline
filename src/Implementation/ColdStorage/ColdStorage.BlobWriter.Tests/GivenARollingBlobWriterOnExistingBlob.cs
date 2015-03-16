@@ -62,7 +62,7 @@
 
         [Fact]
         [Trait("Running time", "Long")]
-        [Trait("Kind", "Integration")]
+        [Trait("Category", "Integration")]
         public async Task WhenWritingSingleBlock_ThenBlockIsAppendedToExistingBlob()
         {
             var payloadString = new string('a', 50);

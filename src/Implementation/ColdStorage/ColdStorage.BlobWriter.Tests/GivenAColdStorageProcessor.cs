@@ -51,7 +51,7 @@
 
         [Fact]
         [Trait("Running time", "Short")]
-        [Trait("Kind", "Unit")]
+        [Trait("Category", "Unit")]
         public async Task WhenIncomingMessagesFailToFillABlock_ThenDoesNotWrite()
         {
             var context = MockPartitionContext.CreateWithNoopCheckpoint("0");
@@ -73,7 +73,7 @@
 
         [Fact]
         [Trait("Running time", "Short")]
-        [Trait("Kind", "Unit")]
+        [Trait("Category", "Unit")]
         public async Task WhenIncomingMessagesFillABlock_ThenWritesFilledBlock()
         {
             // Arrange
@@ -129,7 +129,7 @@
 
         [Fact]
         [Trait("Running time", "Short")]
-        [Trait("Kind", "Unit")]
+        [Trait("Category", "Unit")]
         public async Task WhenClosingForShutdown_ThenFlushesRemainingBuffer()
         {
             var operationQueue = new List<string>();
@@ -185,7 +185,7 @@
 
         [Fact]
         [Trait("Running time", "Short")]
-        [Trait("Kind", "Unit")]
+        [Trait("Category", "Unit")]
         public async Task WhenReceivesNullEvents_ThenFlushesRemainingBuffer()
         {
             var operationQueue = new List<string>();
@@ -241,7 +241,7 @@
 
         [Fact]
         [Trait("Running time", "Short")]
-        [Trait("Kind", "Unit")]
+        [Trait("Category", "Unit")]
         public async Task WhenReceivesNullEvents_ThenDoesNotFlushEmptyBuffer()
         {
             var operationQueue = new List<string>();
@@ -278,7 +278,7 @@
 
         [Fact]
         [Trait("Running time", "Short")]
-        [Trait("Kind", "Unit")]
+        [Trait("Category", "Unit")]
         public async Task WhenClosingForLostLease_ThenDoesNotFlushRemainingBuffer()
         {
             var operationQueue = new List<string>();
@@ -325,7 +325,7 @@
 
         [Fact]
         [Trait("Running time", "Short")]
-        [Trait("Kind", "Unit")]
+        [Trait("Category", "Unit")]
         public async Task WhenClosingForLostLeaseWithEmptyBuffer_ThenDoesThrow()
         {
             var operationQueue = new List<string>();
@@ -359,7 +359,7 @@
 
         [Fact]
         [Trait("Running time", "Short")]
-        [Trait("Kind", "Unit")]
+        [Trait("Category", "Unit")]
         public async Task WhenWritingFullBlockFails_ThenDoesNotThrow()
         {
             // Arrange
@@ -401,7 +401,7 @@
 
         [Fact]
         [Trait("Running time", "Short")]
-        [Trait("Kind", "Unit")]
+        [Trait("Category", "Unit")]
         public async Task WhenWritingFullBlockFails_ThenReattemptsOnNextFilledBlock()
         {
             // Arrange
@@ -469,7 +469,7 @@
 
         [Fact]
         [Trait("Running time", "Short")]
-        [Trait("Kind", "Unit")]
+        [Trait("Category", "Unit")]
         public async Task WhenUnableToCheckpointWithStorageExceptionThenLogs()
         {
             // Arrange
@@ -497,18 +497,18 @@
             await processor.OpenAsync(context);
 
             // Act
-            Assert.DoesNotThrow(async () => await processor.ProcessEventsAsync(context, new[] 
+            await processor.ProcessEventsAsync(context, new[] 
                 {
                     CreateEventData((byte)'a', 100),
                     CreateEventData((byte)'b', 200),
                     CreateEventData((byte)'c', 300),
                     CreateEventData((byte)'d', 400),
-                }));
+                });
         }
 
         [Fact]
         [Trait("Running time", "Short")]
-        [Trait("Kind", "Unit")]
+        [Trait("Category", "Unit")]
         public async Task WhenUnableToCheckpointWithExceptionThenThrows()
         {
             // Arrange

@@ -1,6 +1,8 @@
 #Data Pipeline Guidance
 [Microsoft patterns & practices](http://aka.ms/mspnp)
 
+[![Build status](https://ci.appveyor.com/api/projects/status/vffa0di2sdg8nqkg/branch/master?svg=true)](https://ci.appveyor.com/project/mspnp/data-pipeline/branch/master)
+
 This reference implementation is a work-in-progress project. It is meant to demonstrate proven practices regarding the high-scale, high-volume ingestion of data in a typical event processing system.
 
 The project makes heavy use of [Microsoft Azure Event Hubs](http://azure.microsoft.com/en-us/services/event-hubs/), a cloud-scale telemetry ingestion service. Familiarity with the [general concepts underlying Event Hubs](http://msdn.microsoft.com/en-us/library/azure/dn789972.aspx) is very useful for understanding the source in this reference implementation.
