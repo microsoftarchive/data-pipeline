@@ -14,7 +14,7 @@ namespace Microsoft.Practices.DataPipeline.ColdStorage.BlobWriter.Tests
 
             const string ENV_VAR_NAME = "DataPipeline_BlobWriterTests_StorageAccount";
 
-            var connectionString = Environment.GetEnvironmentVariable(ENV_VAR_NAME, EnvironmentVariableTarget.User);
+            var connectionString = Environment.GetEnvironmentVariable(ENV_VAR_NAME);
 
             if (string.IsNullOrEmpty(connectionString)
                 || !CloudStorageAccount.TryParse(connectionString, out storageAccount))
