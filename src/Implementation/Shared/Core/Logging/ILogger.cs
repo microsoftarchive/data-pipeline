@@ -17,33 +17,33 @@ namespace Microsoft.Practices.DataPipeline.Logging
         void Info(string fmt, params object[] vars);
         void Info(Exception exception, string fmt, params object[] vars);
 
-        void Info(Guid ActivityID, object message);
-        void Info(Guid ActivityID, string fmt, params object[] vars);
-        void Info(Guid ActivityID, Exception exception, string fmt, params object[] vars);
+        void Info(Guid activityId, object message);
+        void Info(Guid activityId, string fmt, params object[] vars);
+        void Info(Guid activityId, Exception exception, string fmt, params object[] vars);
 
         void Debug(object message);
         void Debug(string fmt, params object[] vars);
         void Debug(Exception exception, string fmt, params object[] vars);
 
-        void Debug(Guid ActivityID, object message);
-        void Debug(Guid ActivityID, string fmt, params object[] vars);
-        void Debug(Guid ActivityID, Exception exception, string fmt, params object[] vars);
+        void Debug(Guid activityId, object message);
+        void Debug(Guid activityId, string fmt, params object[] vars);
+        void Debug(Guid activityId, Exception exception, string fmt, params object[] vars);
 
         void Warning(object message);
         void Warning(string fmt, params object[] vars);
         void Warning(Exception exception, string fmt, params object[] vars);
 
-        void Warning(Guid ActivityID, object message);
-        void Warning(Guid ActivityID, string fmt, params object[] vars);
-        void Warning(Guid ActivityID, Exception exception, string fmt, params object[] vars);
+        void Warning(Guid activityId, object message);
+        void Warning(Guid activityId, string fmt, params object[] vars);
+        void Warning(Guid activityId, Exception exception, string fmt, params object[] vars);
 
         void Error(object message);
         void Error(string fmt, params object[] vars);
         void Error(Exception exception, string fmt, params object[] vars);
 
-        void Error(Guid ActivityID, object message);
-        void Error(Guid ActivityID, string fmt, params object[] vars);
-        void Error(Guid ActivityID, Exception exception, string fmt, params object[] vars);
+        void Error(Guid activityId, object message);
+        void Error(Guid activityId, string fmt, params object[] vars);
+        void Error(Guid activityId, Exception exception, string fmt, params object[] vars);
      
         Guid TraceIn(string method);
         Guid TraceIn(string method, string properties);
