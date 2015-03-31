@@ -314,68 +314,70 @@ namespace Microsoft.Practices.DataPipeline.Logging.NLog
             logEvent.Properties.Add("activityId", activityId);
             this._log.Log(logEvent);
         }
-        public void Info(Guid ActivityID, object message)
+        public void Info(Guid activityId, object message)
         {
-            LogEvent(LogLevel.Info, ActivityID, null,
+            LogEvent(LogLevel.Info, activityId, null,
                 message == null ? String.Empty : message.ToString());
         }
 
-        public void Info(Guid ActivityID, string fmt, params object[] vars)
+        public void Info(Guid activityId, string fmt, params object[] vars)
         {
-            LogEvent(LogLevel.Info, ActivityID, null, fmt, vars);
+            LogEvent(LogLevel.Info, activityId, null, fmt, vars);
         }
 
-        public void Info(Guid ActivityID, Exception exception, string fmt, params object[] vars)
+        public void Info(Guid activityId, Exception exception, string fmt, params object[] vars)
         {
-            LogEvent(LogLevel.Info, ActivityID, exception, fmt, vars);
+            LogEvent(LogLevel.Info, activityId, exception, fmt, vars);
         }
 
-        public void Debug(Guid ActivityID, object message)
+        public void Debug(Guid activityId, object message)
         {
-            LogEvent(LogLevel.Debug, ActivityID, null,
+            LogEvent(LogLevel.Debug, activityId, null,
                 message == null ? String.Empty : message.ToString());
         }
 
-        public void Debug(Guid ActivityID, string fmt, params object[] vars)
+        public void Debug(Guid activityId, string fmt, params object[] vars)
         {
-            LogEvent(LogLevel.Debug, ActivityID, null, fmt, vars);
+            LogEvent(LogLevel.Debug, activityId, null, fmt, vars);
         }
 
-        public void Debug(Guid ActivityID, Exception exception, string fmt, params object[] vars)
+        public void Debug(Guid activityId, Exception exception, string fmt, params object[] vars)
         {
-            LogEvent(LogLevel.Debug, ActivityID, exception, fmt, vars);
+            LogEvent(LogLevel.Debug, activityId, exception, fmt, vars);
         }
 
-        public void Warning(Guid ActivityID, object message)
+        public void Warning(Guid activityId, object message)
         {
-            LogEvent(LogLevel.Warn, ActivityID, null,
+            LogEvent(LogLevel.Warn, activityId, null,
                 message == null ? String.Empty : message.ToString());
         }
 
-        public void Warning(Guid ActivityID, string fmt, params object[] vars)
+        public void Warning(Guid activityId, string fmt, params object[] vars)
         {
-            LogEvent(LogLevel.Warn, ActivityID, null, fmt, vars);
+            LogEvent(LogLevel.Warn, activityId, null, fmt, vars);
         }
 
-        public void Warning(Guid ActivityID, Exception exception, string fmt, params object[] vars)
+        public void Warning(Guid activityId, Exception exception, string fmt, params object[] vars)
         {
-            LogEvent(LogLevel.Warn, ActivityID, exception, fmt, vars);
+            LogEvent(LogLevel.Warn, activityId, exception, fmt, vars);
         }
 
-        public void Error(Guid ActivityID, object message)
+        public void Error(Guid activityId, object message)
         {
-            LogEvent(LogLevel.Error, ActivityID, null,
+            LogEvent(LogLevel.Error, activityId, null,
                message == null ? String.Empty : message.ToString());
         }
 
-        public void Error(Guid ActivityID, string fmt, params object[] vars)
+        public void Error(Guid activityId, string fmt, params object[] vars)
         {
-            LogEvent(LogLevel.Error, ActivityID, null, fmt, vars);
+            LogEvent(LogLevel.Error, activityId, null, fmt, vars);
         }
 
-        public void Error(Guid ActivityID, Exception exception, string fmt, params object[] vars)
+        public void Error(Guid activityId, Exception exception, string fmt, params object[] vars)
         {
-            LogEvent(LogLevel.Error, ActivityID, exception, fmt, vars);
+            LogEvent(LogLevel.Error, activityId, exception, fmt, vars);
         }
+
+
     }
 }

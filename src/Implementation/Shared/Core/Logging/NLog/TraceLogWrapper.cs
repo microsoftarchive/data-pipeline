@@ -138,7 +138,7 @@ namespace Microsoft.Practices.DataPipeline.Logging.NLog
 
         public Guid TraceIn(string method, string properties)
         {
-             Guid g = Guid.NewGuid();
+            Guid g = Guid.NewGuid();
             System.Diagnostics.Trace.WriteLine(String.Format(
                 "START - {0} - {1}", method, g.ToString()));
             return g;
@@ -201,89 +201,116 @@ namespace Microsoft.Practices.DataPipeline.Logging.NLog
                 String.Format(format, args)));
         }
 
-
-
-
-
         public void Info(object message)
         {
-            throw new NotImplementedException();
+            if (message != null) 
+                System.Diagnostics.Trace.TraceInformation(message.ToString());
         }
 
-        public void Info(Guid ActivityID, object message)
+        public void Info(Guid activityId, object message)
         {
-            throw new NotImplementedException();
+            if (message != null)
+            {
+                System.Diagnostics.Trace.TraceInformation(String.Concat(activityId.ToByteArray(), ':', message));
+            }
         }
 
-        public void Info(Guid ActivityID, string fmt, params object[] vars)
+        public void Info(Guid activityId, string fmt, params object[] vars)
         {
-            throw new NotImplementedException();
+            System.Diagnostics.Trace.TraceInformation(
+                String.Concat(activityId.ToByteArray(), ':', 
+                    String.Format(fmt, vars)));
         }
 
-        public void Info(Guid ActivityID, Exception exception, string fmt, params object[] vars)
+        public void Info(Guid activityId, Exception exception, string fmt, params object[] vars)
         {
-            throw new NotImplementedException();
+            System.Diagnostics.Trace.TraceInformation(
+                String.Concat(activityId.ToByteArray(), ':',
+                    String.Format(fmt, vars), " - ", exception.ToString()));
         }
 
-        public void Debug(Guid ActivityID, object message)
+        public void Debug(Guid activityId, object message)
         {
-            throw new NotImplementedException();
+            if (message != null)
+            {
+                System.Diagnostics.Trace.TraceInformation(String.Concat(activityId.ToByteArray(), ':', message));
+            }
         }
 
-        public void Debug(Guid ActivityID, string fmt, params object[] vars)
+        public void Debug(Guid activityId, string fmt, params object[] vars)
         {
-            throw new NotImplementedException();
+            System.Diagnostics.Trace.TraceInformation(
+                String.Concat(activityId.ToByteArray(), ':',
+                    String.Format(fmt, vars)));
         }
 
-        public void Debug(Guid ActivityID, Exception exception, string fmt, params object[] vars)
+        public void Debug(Guid activityId, Exception exception, string fmt, params object[] vars)
         {
-            throw new NotImplementedException();
+            System.Diagnostics.Trace.TraceInformation(
+             String.Concat(activityId.ToByteArray(), ':',
+                 String.Format(fmt, vars), " - ", exception.ToString()));
         }
 
-        public void Warning(Guid ActivityID, object message)
+        public void Warning(Guid activityId, object message)
         {
-            throw new NotImplementedException();
+            if (message != null)
+            {
+                System.Diagnostics.Trace.TraceWarning(String.Concat(activityId.ToByteArray(), ':', message));
+            }
         }
 
-        public void Warning(Guid ActivityID, string fmt, params object[] vars)
+        public void Warning(Guid activityId, string fmt, params object[] vars)
         {
-            throw new NotImplementedException();
+            System.Diagnostics.Trace.TraceWarning(
+                String.Concat(activityId.ToByteArray(), ':',
+                    String.Format(fmt, vars)));
         }
 
-        public void Warning(Guid ActivityID, Exception exception, string fmt, params object[] vars)
+        public void Warning(Guid activityId, Exception exception, string fmt, params object[] vars)
         {
-            throw new NotImplementedException();
+           System.Diagnostics.Trace.TraceWarning(
+             String.Concat(activityId.ToByteArray(), ':',
+                 String.Format(fmt, vars), " - ", exception.ToString()));
         }
 
-        public void Error(Guid ActivityID, object message)
+        public void Error(Guid activityId, object message)
         {
-            throw new NotImplementedException();
+            if (message != null)
+            {
+                System.Diagnostics.Trace.TraceError(String.Concat(activityId.ToByteArray(), ':', message));
+            }
         }
 
-        public void Error(Guid ActivityID, string fmt, params object[] vars)
+        public void Error(Guid activityId, string fmt, params object[] vars)
         {
-            throw new NotImplementedException();
+            System.Diagnostics.Trace.TraceError(
+             String.Concat(activityId.ToByteArray(), ':',
+                 String.Format(fmt, vars)));
         }
 
-        public void Error(Guid ActivityID, Exception exception, string fmt, params object[] vars)
+        public void Error(Guid activityId, Exception exception, string fmt, params object[] vars)
         {
-            throw new NotImplementedException();
+            System.Diagnostics.Trace.TraceError(
+                String.Concat(activityId.ToByteArray(), ':',
+                    String.Format(fmt, vars), " - ", exception.ToString()));
         }
-
 
         public void TraceIn(Guid activityId, string method)
         {
-            throw new NotImplementedException();
+            System.Diagnostics.Trace.WriteLine(String.Format(
+                "START - {0} - {1}", method, activityId.ToString()));            
         }
 
         public void TraceIn(Guid activityId, string method, string properties)
         {
-            throw new NotImplementedException();
+            System.Diagnostics.Trace.WriteLine(String.Format(
+                 "START - {0} - {1}", method, activityId.ToString()));
         }
 
         public void TraceIn(Guid activityId, string method, string fmt, params object[] vars)
         {
-            throw new NotImplementedException();
+            System.Diagnostics.Trace.WriteLine(String.Format(
+                "START - {0} - {1}: {2}", method, activityId.ToString(), String.Format(fmt, vars)));
         }
     }
 }
