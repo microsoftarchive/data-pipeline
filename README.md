@@ -1,4 +1,6 @@
 #Data Pipeline Guidance
+
+[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/mspnp/data-pipeline?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [Microsoft patterns & practices](http://aka.ms/mspnp)
 
 [![Build status](https://ci.appveyor.com/api/projects/status/vffa0di2sdg8nqkg/branch/master?svg=true)](https://ci.appveyor.com/project/mspnp/data-pipeline/branch/master)
