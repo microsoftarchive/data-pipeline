@@ -1,4 +1,6 @@
-﻿namespace Microsoft.Practices.DataPipeline.ColdStorage
+﻿// Copyright (c) Microsoft. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+namespace Microsoft.Practices.DataPipeline.ColdStorage
 {
     using System;
     using Microsoft.Practices.DataPipeline.Logging;

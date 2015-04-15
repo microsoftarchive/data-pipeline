@@ -1,4 +1,6 @@
-﻿namespace Microsoft.Practices.DataPipeline.Cars.Messages
+﻿// Copyright (c) Microsoft. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+namespace Microsoft.Practices.DataPipeline.Cars.Messages
 {
     // This message does not have a corresponding handler.
     // It is used to demonstrate how the dispatcher will

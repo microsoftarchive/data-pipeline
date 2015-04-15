@@ -1,4 +1,6 @@
-﻿namespace Microsoft.Practices.DataPipeline.Cars.Simulator.Tests
+﻿// Copyright (c) Microsoft. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+namespace Microsoft.Practices.DataPipeline.Cars.Simulator.Tests
 {
     using Microsoft.Practices.DataPipeline.Cars.Dispatcher.Simulator;
     using Microsoft.Practices.DataPipeline.Cars.Messages;
