@@ -1,3 +1,5 @@
+// Copyright (c) Microsoft. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
 namespace Microsoft.Practices.DataPipeline.Dispatcher
 {
     // This class exists simply to capture and consolidate
