@@ -2,6 +2,13 @@
 
 [Microsoft patterns & practices](http://aka.ms/mspnp)
 
+:memo: 
+
+> An updated version of the [Cold Storage Processor](https://github.com/mspnp/data-pipeline/tree/master/src/Implementation/ColdStorage) and the [Simulator](https://github.com/mspnp/data-pipeline/tree/master/src/Implementation/Simulator) are available as part of our [IoT Journey project](https://github.com/mspnp/iot-journey). The updated versions are:
+* [Long-term Storage event processor](https://github.com/mspnp/iot-journey/tree/master/src/LongTermStorage/DotnetEventProcessor)
+* [Scenario Simulator](https://github.com/mspnp/iot-journey/tree/master/src/Simulator/ScenarioSimulator)
+
+
 [![Build status](https://ci.appveyor.com/api/projects/status/vffa0di2sdg8nqkg/branch/master?svg=true)](https://ci.appveyor.com/project/mspnp/data-pipeline/branch/master)
 
 [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/mspnp/data-pipeline?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
