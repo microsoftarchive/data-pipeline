@@ -5,19 +5,25 @@ namespace Microsoft.Practices.DataPipeline.ColdStorage.BlobWriter.Tests
     using System.Configuration;
     using System.Text;
     using Microsoft.WindowsAzure.Storage;
+    using Microsoft.WindowsAzure;
+    using System;
 
     public static class TestUtilities
     {
         public static CloudStorageAccount GetStorageAccount()
         {
             CloudStorageAccount storageAccount;
-            var connectionString = ConfigurationManager.AppSettings["storageconnectionstring"];
+
+            const string ENV_VAR_NAME = "DataPipeline_BlobWriterTests_StorageAccount";
+
+            var connectionString = Environment.GetEnvironmentVariable(ENV_VAR_NAME);
+
             if (string.IsNullOrEmpty(connectionString)
-                || connectionString.Contains("YourStorageAccountName")
                 || !CloudStorageAccount.TryParse(connectionString, out storageAccount))
             {
                 throw new ConfigurationErrorsException(
-                    "Ensure the app setting with key 'storageconnectionstring' has a valid storage connection string as its value in the App.config file. It must be set in order to run integration tests.");
+                    string.Format(
+                    "Ensure the environmental variable with key '{0}' has a valid storage connection string as its value. It must be set in order to run integration tests.", ENV_VAR_NAME));
             }
 
             return storageAccount;
